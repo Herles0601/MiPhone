@@ -8,8 +8,23 @@
     "category": "iphones",
     "condition": "nuevo",
     "badge": "Nuevo",
-    "image": "https://via.placeholder.com/150x250?text=iPhone+15+Pro+Max",
-    "description": "El iPhone más potente de Apple con chasis de titanio de calidad aeroespacial, chip A17 Pro ultra rápido y el sistema de cámaras más avanzado en un iPhone."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/IPhone_15_Pro_Max.jpeg?width=900",
+    "description": "El iPhone más potente de Apple con chasis de titanio, gran rendimiento y sistema de cámaras avanzado.",
+    "specs": [
+      "Pantalla Super Retina XDR OLED de 6.7 pulgadas",
+      "Chip A17 Pro",
+      "Cámara principal de 48 MP",
+      "Puerto USB-C",
+      "Batería de larga duración"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Titanio Natural", "value": "#bebeb6" },
+        { "name": "Titanio Azul", "value": "#2f4452" },
+        { "name": "Titanio Negro", "value": "#3b3c3e" }
+      ],
+      "storage": ["256GB", "512GB", "1TB"]
+    }
   },
   {
     "id": 2,
@@ -20,8 +35,23 @@
     "category": "iphones",
     "condition": "seminuevo",
     "badge": "Seminuevo",
-    "image": "https://via.placeholder.com/150x250?text=iPhone+13+Pro",
-    "description": "Increíble rendimiento y pantalla ProMotion de 120Hz. Autonomía sobresaliente y cámaras que redefinieron la fotografía móvil."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Apple_iPhone_13_Pro.jpg?width=900",
+    "description": "iPhone Pro con pantalla ProMotion, excelente autonomía y sistema de cámaras profesional.",
+    "specs": [
+      "Pantalla Super Retina XDR con ProMotion",
+      "Chip A15 Bionic",
+      "Sistema de cámaras Pro",
+      "Escáner LiDAR",
+      "Equipo revisado y probado"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Sierra Blue", "value": "#a7c1d6" },
+        { "name": "Graphite", "value": "#4e4f50" },
+        { "name": "Gold", "value": "#fae0c5" }
+      ],
+      "storage": ["128GB", "256GB"]
+    }
   },
   {
     "id": 3,
@@ -32,8 +62,23 @@
     "category": "samsung",
     "condition": "nuevo",
     "badge": "Nuevo",
-    "image": "https://via.placeholder.com/150x250?text=Galaxy+S24+Ultra",
-    "description": "Lidera la era de la IA móvil con Galaxy AI. Fotografía de 200 MP y S Pen integrado para máxima productividad."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung_Galaxy_S24_Ultra.jpg?width=900",
+    "description": "Galaxy de gama alta con S Pen, cámara avanzada y gran rendimiento para productividad y entretenimiento.",
+    "specs": [
+      "Pantalla Dynamic AMOLED 2X de 6.8 pulgadas",
+      "Procesador de alto rendimiento",
+      "Cámara principal de 200 MP",
+      "S Pen integrado",
+      "Marco de titanio"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Titanium Gray", "value": "#8e8e93" },
+        { "name": "Titanium Yellow", "value": "#f7e7c4" },
+        { "name": "Titanium Violet", "value": "#4b415a" }
+      ],
+      "storage": ["256GB", "512GB"]
+    }
   },
   {
     "id": 4,
@@ -44,8 +89,23 @@
     "category": "iphones",
     "condition": "seminuevo",
     "badge": "Seminuevo",
-    "image": "https://via.placeholder.com/150x250?text=iPhone+12",
-    "description": "Diseño de bordes planos icónico, conectividad 5G, pantalla Super Retina XDR y sistema de doble cámara trasera avanzado."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/IPhone_12_-_2.jpg?width=900",
+    "description": "Diseño de bordes planos, conectividad 5G y pantalla Super Retina XDR.",
+    "specs": [
+      "Pantalla Super Retina XDR OLED de 6.1 pulgadas",
+      "Chip A14 Bionic",
+      "Doble cámara de 12 MP",
+      "Conectividad 5G",
+      "Inspección técnica aprobada"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Negro", "value": "#1c1c1e" },
+        { "name": "Blanco", "value": "#f5f5f7" },
+        { "name": "Azul", "value": "#203a43" }
+      ],
+      "storage": ["64GB", "128GB"]
+    }
   },
   {
     "id": 5,
@@ -56,8 +116,23 @@
     "category": "ipads",
     "condition": "seminuevo",
     "badge": "Seminuevo",
-    "image": "https://via.placeholder.com/150x250?text=iPad+Air+5G",
-    "description": "Potenciada por el chip M1 de Apple. Ideal para estudiantes, diseñadores y profesionales que buscan portabilidad y potencia extrema."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/IPad_Air_5th_Generation_2024.jpg?width=900",
+    "description": "iPad potente y liviano, ideal para estudiar, trabajar, diseñar y consumir contenido.",
+    "specs": [
+      "Pantalla Liquid Retina de 10.9 pulgadas",
+      "Chip M1",
+      "Cámara trasera de 12 MP",
+      "Compatible con Apple Pencil",
+      "Puerto USB-C"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Gris Espacial", "value": "#4e4f50" },
+        { "name": "Azul", "value": "#a7c1d6" },
+        { "name": "Púrpura", "value": "#d7c3eb" }
+      ],
+      "storage": ["64GB", "256GB"]
+    }
   },
   {
     "id": 6,
@@ -68,8 +143,22 @@
     "category": "samsung",
     "condition": "nuevo",
     "badge": "Nuevo",
-    "image": "https://via.placeholder.com/150x250?text=Galaxy+A55+5G",
-    "description": "Excelente relación calidad-precio. Diseño premium, procesador Exynos potente y resistencia al agua IP67."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung_Galaxy_A55_5G_2024.jpg?width=900",
+    "description": "Samsung de excelente relación calidad-precio con pantalla fluida, buena cámara y batería duradera.",
+    "specs": [
+      "Pantalla Super AMOLED de 6.6 pulgadas",
+      "Conectividad 5G",
+      "Cámara principal de 50 MP",
+      "Batería de 5,000 mAh",
+      "Diseño moderno"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Awesome Iceblue", "value": "#e3f2fd" },
+        { "name": "Awesome Navy", "value": "#1a237e" }
+      ],
+      "storage": ["128GB", "256GB"]
+    }
   },
   {
     "id": 7,
@@ -80,8 +169,21 @@
     "category": "accessories",
     "condition": "nuevo",
     "badge": "Nuevo",
-    "image": "https://via.placeholder.com/150x150?text=Cargador+USB-C",
-    "description": "Adaptador USB-C original de Apple de 20W. Carga tu iPhone al 50% en solo 30 minutos de forma segura."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Apple_USB_Charger_1_2017-02-02.jpg?width=900",
+    "description": "Adaptador de corriente Apple USB-C ideal para carga rápida de iPhone, iPad y otros dispositivos compatibles.",
+    "specs": [
+      "Carga rápida",
+      "Puerto USB-C",
+      "Compatible con iPhone y iPad",
+      "Diseño compacto",
+      "Color blanco"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Blanco", "value": "#ffffff" }
+      ],
+      "storage": ["Estándar"]
+    }
   },
   {
     "id": 8,
@@ -92,7 +194,20 @@
     "category": "accessories",
     "condition": "nuevo",
     "badge": "Nuevo",
-    "image": "https://via.placeholder.com/150x150?text=AirPods+Pro+2G",
-    "description": "Cancelación Activa de Ruido, audio espacial personalizado y estuche de carga MagSafe. La experiencia de audio más avanzada de Apple."
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/AirPods_Pro_%282nd_generation%29.jpg?width=900",
+    "description": "Audífonos Apple con cancelación activa de ruido, audio espacial y estuche de carga.",
+    "specs": [
+      "Cancelación Activa de Ruido",
+      "Audio espacial",
+      "Estuche de carga",
+      "Diseño intraural",
+      "Color blanco"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Blanco", "value": "#ffffff" }
+      ],
+      "storage": ["Estándar"]
+    }
   }
 ]
