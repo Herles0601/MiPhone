@@ -1,7 +1,7 @@
 // 1. Base de datos de productos
 // Los productos ahora se cargan desde productos.json.
 // El archivo productos.json debe estar en la misma carpeta que index.html, app.js y styles.css.
-let productos = [];
+let products = [];
 
 async function cargarProductosDesdeJSON() {
     try {
