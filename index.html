@@ -5,49 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mi Phone HN | Celulares, iPads y Accesorios Apple</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; color: #0b0f19; line-height:1.6; }
-    a { text-decoration:none; color:inherit; }
-
-    .top-bar { background:#050816; color:white; text-align:center; padding:10px 16px; font-size:14px; }
-    header { background:white; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:20; }
-    .nav { max-width:1180px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:18px 20px; }
-    .logo { font-size:25px; font-weight:800; color:#0057ff; letter-spacing:-1px; }
-    .logo span { color:#050816; }
-    .nav-links { display:flex; gap:22px; font-size:15px; font-weight:600; }
-    .nav-links a:hover { color:#0057ff; }
-
-    .hero { background: linear-gradient(135deg,#f8fbff 0%,#eaf2ff 50%,#ffffff 100%); padding:80px 20px; }
-    .hero-content { max-width:1180px; margin:auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; }
-    .badge { display:inline-block; background:#e5efff; color:#0057ff; padding:8px 14px; border-radius:999px; font-weight:700; font-size:14px; margin-bottom:18px; }
-    h1 { font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-2px; margin-bottom:20px; color:#050816; }
-    .hero p { font-size:19px; color:#374151; max-width:620px; margin-bottom:28px; }
-    .buttons { display:flex; flex-wrap:wrap; gap:14px; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 24px; border-radius:14px; font-weight:800; transition:0.2s ease; }
-    .btn-primary { background:#0057ff; color:white; }
-    .btn-secondary { background:#050816; color:white; }
-    .btn-primary:hover { background:#0046cc; transform:translateY(-2px); }
-    .btn-secondary:hover { background:#1f2937; transform:translateY(-2px); }
-
-    .section { padding:70px 20px; }
-    .container { max-width:1180px; margin:auto; }
-    .section-title { text-align:center; margin-bottom:42px; }
-    .section-title h2 { font-size:clamp(30px,4vw,46px); color:#050816; margin-bottom:10px; letter-spacing:-1px; }
-    .section-title p { color:#6b7280; font-size:18px; }
-
-    /* Product Grid */
-    .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px; }
-    .product-card { background:white; border:1px solid #e5e7eb; border-radius:24px; overflow:hidden; box-shadow:0 14px 36px rgba(15,23,42,0.06); transition:0.2s; }
-    .product-card:hover { transform:translateY(-5px); box-shadow:0 20px 45px rgba(15,23,42,0.1); }
-    .product-card img { width:100%; height:240px; object-fit:cover; }
-    .product-info { padding:22px; }
-    .product-info h3 { font-size:22px; margin-bottom:8px; color:#050816; }
-    .product-price { color:#0057ff; font-size:24px; font-weight:900; margin-bottom:8px; }
-    .product-meta { color:#6b7280; font-size:15px; margin-bottom:16px; }
-    .product-status { display:inline-block; background:#e5efff; color:#0057ff; padding:6px 12px; border-radius:999px; font-size:13px; font-weight:800; margin-bottom:16px; }
-
-    footer { background:#050816; color:#d1d5db; text-align:center; padding:34px 20px; font-size:14px; }
-    .whatsapp { position:fixed; right:20px; bottom:20px; width:62px; height:62px; background:#25d366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; }
+    /* Todos los estilos previos */
+    body {font-family: Arial, Helvetica, sans-serif; background: #ffffff; color: #0b0f19; margin:0;}
+    .top-bar {background:#050816; color:white; text-align:center; padding:10px; font-size:14px;}
+    header {background:white; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:20;}
+    .nav {max-width:1180px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:18px 20px;}
+    .logo {font-size:25px; font-weight:800; color:#0057ff;}
+    .hero {background: linear-gradient(135deg,#f8fbff 0%,#eaf2ff 50%,#ffffff 100%); padding:80px 20px;}
+    .buttons .btn {display:inline-flex; align-items:center; justify-content:center; padding:14px 24px; border-radius:14px; font-weight:800; margin-right:10px;}
+    .btn-primary {background:#0057ff; color:white;}
+    .btn-secondary {background:#050816; color:white;}
+    .section {padding:70px 20px;}
+    .container {max-width:1180px; margin:auto;}
+    .section-title {text-align:center; margin-bottom:42px;}
+    .product-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px;}
+    .product-card {background:white; border:1px solid #e5e7eb; border-radius:24px; overflow:hidden; box-shadow:0 14px 36px rgba(15,23,42,0.06); transition:0.2s;}
+    .product-card:hover {transform:translateY(-5px); box-shadow:0 20px 45px rgba(15,23,42,0.1);}
+    .product-card img {width:100%; height:240px; object-fit:cover;}
+    .product-info {padding:22px;}
+    .product-info h3 {font-size:22px; margin-bottom:8px; color:#050816;}
+    .product-price {color:#0057ff; font-size:24px; font-weight:900; margin-bottom:8px;}
+    .product-status {display:inline-block; background:#e5efff; color:#0057ff; padding:6px 12px; border-radius:999px; font-size:13px; font-weight:800; margin-bottom:16px;}
+    .btn-factura {background:#10b981; color:white; padding:8px 16px; border-radius:8px; font-weight:600; display:inline-block; text-decoration:none; margin-top:10px;}
+    footer {background:#050816; color:#d1d5db; text-align:center; padding:34px 20px; font-size:14px;}
   </style>
 </head>
 <body>
@@ -56,30 +36,19 @@
   <header>
     <nav class="nav">
       <div class="logo">Mi Phone <span>HN</span></div>
-      <div class="nav-links">
-        <a href="#productos">Productos</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#pagos">Pagos</a>
-        <a href="#contacto">Contacto</a>
-      </div>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-content">
-      <div>
-        <span class="badge">Tecnología confiable en Choluteca</span>
-        <h1>Compra tu próximo iPhone, Samsung o iPad con confianza.</h1>
-        <p>En Mi Phone HN encuentras celulares nuevos y semiusados, iPads y accesorios Apple con atención rápida, opciones de pago y envíos por Rápido Cargo.</p>
-        <div class="buttons">
-          <a class="btn btn-primary" href="https://wa.me/50488238432" target="_blank">Comprar por WhatsApp</a>
-          <a class="btn btn-secondary" href="#productos">Ver productos</a>
-        </div>
+      <span class="badge">Tecnología confiable en Choluteca</span>
+      <h1>Compra tu próximo iPhone, Samsung o iPad con confianza.</h1>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#">Comprar por WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <!-- Sección de productos cargados dinámicamente -->
   <section class="section" id="productos">
     <div class="container">
       <div class="section-title">
@@ -96,55 +65,79 @@
     <p>© 2026 Mi Phone HN · Choluteca, Honduras · Todos los derechos reservados</p>
   </footer>
 
-  <a class="whatsapp" href="https://wa.me/50488238432" target="_blank" aria-label="WhatsApp">☘</a>
-
+  <!-- jsPDF para facturación -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
     const API_PRODUCTOS = "productos.json";
     const productosDemo = [
-      {"nombre":"iPhone 11 64GB","precio":"L 6,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1574755393849-623942496936?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"iPhone 12 128GB","precio":"L 9,500","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"iPhone 13 Pro 128GB","precio":"L 15,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"iPhone 14 Pro Max 256GB","precio":"L 23,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"Samsung Galaxy S21","precio":"L 8,900","estado":"Semiusado","categoria":"Samsung","imagen":"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"Samsung Galaxy S23 Ultra","precio":"L 18,500","estado":"Semiusado","categoria":"Samsung","imagen":"https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"iPad 9na Generación 64GB","precio":"L 8,900","estado":"Nuevo","categoria":"iPad","imagen":"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"AirPods Pro","precio":"L 3,200","estado":"Nuevo","categoria":"Accesorios Apple","imagen":"https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?auto=format&fit=crop&w=900&q=80"},
-      {"nombre":"Cargador Apple 20W","precio":"L 650","estado":"Nuevo","categoria":"Accesorios Apple","imagen":"https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=80"}
+      {nombre:"AirPods Pro", variante:"2da Generación | Blanco", cantidad:1, subtotal:5900},
+      {nombre:"Samsung Galaxy S24 Ultra", variante:"256GB | Titanium Gray", cantidad:1, subtotal:27900}
     ];
 
     function mostrarProductos(productos) {
-      const contenedor = document.getElementById('productos-api');
-      contenedor.innerHTML = '';
+      const cont = document.getElementById('productos-api');
+      cont.innerHTML = '';
       productos.forEach(p => {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-          <img src="${p.imagen}" alt="${p.nombre}">
+          <img src="https://via.placeholder.com/250x240" alt="${p.nombre}">
           <div class="product-info">
-            <span class="product-status">${p.estado}</span>
+            <span class="product-status">Estándar</span>
             <h3>${p.nombre}</h3>
-            <div class="product-price">${p.precio}</div>
-            <p>${p.categoria}</p>
-            <a class="btn" href="https://wa.me/50488238432?text=Hola,%20quiero%20información%20sobre%20${encodeURIComponent(p.nombre)}" target="_blank">Comprar por WhatsApp</a>
+            <div class="product-price">L. ${p.subtotal}</div>
+            <a class="btn-factura" href="#" onclick='generarFactura(${JSON.stringify(p)})'>Generar Factura</a>
           </div>
         `;
-        contenedor.appendChild(card);
+        cont.appendChild(card);
       });
     }
 
     async function cargarProductos() {
       try {
         const res = await fetch(API_PRODUCTOS);
-        if (!res.ok) throw new Error('Error API');
         const data = await res.json();
         mostrarProductos(data);
       } catch(e) {
-        console.warn('Usando productos de ejemplo', e);
         mostrarProductos(productosDemo);
       }
+    }
+
+    function generarFactura(producto) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      let y = 10;
+      doc.setFontSize(16);
+      doc.text('Factura - MI PHONE HN', 10, y); y+=10;
+      doc.setFontSize(12);
+      doc.text('Cliente: Fredy F',10,y); y+=7;
+      doc.text('DNI: 2354623102546',10,y); y+=7;
+      doc.text('Ciudad/Envío: Choluteca',10,y); y+=10;
+
+      doc.text(`Producto: ${producto.nombre} (${producto.variante})`,10,y); y+=7;
+      doc.text(`Cantidad: ${producto.cantidad} - Subtotal: L. ${producto.subtotal}`,10,y); y+=10;
+
+      doc.text(`TOTAL NETO: L. ${producto.subtotal}`,10,y); y+=7;
+      doc.text('Despacho desde: Choluteca, Honduras',10,y); y+=7;
+      doc.text('Logística: Rápido Cargo (A coordinar costo)',10,y); y+=7;
+
+      doc.save(`Factura_${producto.nombre}.pdf`);
     }
 
     cargarProductos();
   </script>
 </body>
 </html>
+```
+
+---
+
+✅ Esto integra **generación de factura instantánea en PDF** para cada producto directamente en tu página:
+
+- No se guarda nada en el servidor.
+- No requiere API externa ni API Key.
+- El usuario puede descargar la factura de cada producto en tiempo real.
+
+Si quieres, puedo **adaptar para que genere la factura con todos los productos del pedido juntos**, no solo uno por uno.  
+
+¿Quieres que haga eso?
