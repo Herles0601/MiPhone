@@ -2,10 +2,8 @@
    MI PHONE HN — LÓGICA DE APLICACIÓN
    Los productos se cargan desde: products.json
    ========================================================================== */
-
 // URL del archivo de datos (relativa al sitio)
 const PRODUCTS_API = './products.json';
-
 // 1. Base de datos de productos (se llena con fetch)
 let products = [];
     {
@@ -215,7 +213,6 @@ let products = [];
         }
     }
 ];
-
 // 2. Estado de la aplicación
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let activeCategory = "all";
@@ -225,7 +222,6 @@ let currentSelectedProduct = null;
 let modalSelectedColor = "";
 let modalSelectedStorage = "";
 const WHATSAPP_PHONE = "50488238432";
-
 // Elementos del DOM
 const productsGrid      = document.getElementById('products-grid');
 const noResults         = document.getElementById('no-results');
@@ -251,11 +247,9 @@ const calcWhatsappBtn   = document.getElementById('calc-whatsapp-btn');
 const themeToggle       = document.getElementById('theme-toggle');
 const mobileMenuToggle  = document.getElementById('mobile-menu-toggle');
 const navMenu           = document.getElementById('nav-menu');
-
 /* ==========================================================================
    3. Inicialización
    ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     updateCartUI();
@@ -263,7 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateFinancing();
     loadProducts(); // Cargar productos desde el JSON
 });
-
 // Cargar productos desde products.json
 async function loadProducts() {
     showCatalogLoading();
@@ -277,7 +270,6 @@ async function loadProducts() {
         showCatalogError();
     }
 }
-
 function showCatalogLoading() {
     productsGrid.innerHTML = `
         <div style="grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-secondary);">
@@ -288,7 +280,6 @@ function showCatalogLoading() {
         </div>
     `;
 }
-
 function showCatalogError() {
     productsGrid.innerHTML = `
         <div style="grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-secondary);">
@@ -303,19 +294,16 @@ function showCatalogError() {
         </div>
     `;
 }
-
 function initTheme() {
     const saved = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', saved);
 }
-
 function setupEventListeners() {
     // Búsqueda
     searchInput.addEventListener('input', e => {
         searchQuery = e.target.value.toLowerCase().trim();
         renderProducts();
     });
-
     // Filtros de categoría
     filterTabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -325,7 +313,6 @@ function setupEventListeners() {
             renderProducts();
         });
     });
-
     // Filtros de condición
     filterTags.forEach(tag => {
         tag.addEventListener('click', () => {
@@ -335,30 +322,24 @@ function setupEventListeners() {
             renderProducts();
         });
     });
-
     // Carrito
     cartToggleBtn.addEventListener('click', openCart);
     cartCloseBtn.addEventListener('click', closeCart);
     cartDrawerOverlay.addEventListener('click', closeCart);
     checkoutBtn.addEventListener('click', checkoutCartWhatsApp);
-
     // Modal
     productModalClose.addEventListener('click', closeProductModal);
     productModalOverlay.addEventListener('click', closeProductModal);
-
     // Calculadora
     calcAmount.addEventListener('input', calculateFinancing);
     calcMonths.addEventListener('change', calculateFinancing);
-
     // Tema
     themeToggle.addEventListener('click', toggleTheme);
-
     // Menú móvil
     mobileMenuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
-
     // FAQ acordeón
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -369,11 +350,9 @@ function setupEventListeners() {
         });
     });
 }
-
 /* ==========================================================================
    4. Renderizado del Catálogo
    ========================================================================== */
-
 function renderProducts() {
     const filtered = products.filter(p => {
         const matchSearch = p.title.toLowerCase().includes(searchQuery) ||
@@ -382,25 +361,20 @@ function renderProducts() {
         const matchCond   = activeCondition === "all" || p.condition === activeCondition;
         return matchSearch && matchCat && matchCond;
     });
-
     productsGrid.innerHTML = "";
-
     if (filtered.length === 0) {
         noResults.style.display = "block";
         return;
     }
     noResults.style.display = "none";
-
     filtered.forEach(product => {
         const card = document.createElement('div');
         card.className = "product-card";
-
         const formattedPrice    = formatCurrency(product.price);
         const formattedOldPrice = product.oldPrice ? formatCurrency(product.oldPrice) : "";
         const oldPriceHTML      = product.oldPrice
             ? `<span class="price-old">${formattedOldPrice}</span>` : "";
         const badgeClass = product.condition === "nuevo" ? "tag-nuevo" : "tag-seminuevo";
-
         card.innerHTML = `
             <span class="product-tag-badge ${badgeClass}">${product.badge}</span>
             <div class="product-image-container" onclick="openProductModal(${product.id})">
@@ -422,48 +396,38 @@ function renderProducts() {
         productsGrid.appendChild(card);
     });
 }
-
 /* ==========================================================================
    5. Modal de Detalle de Producto
    ========================================================================== */
-
 window.openProductModal = function(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-
     currentSelectedProduct = product;
     modalSelectedColor   = product.variants.colors[0].name;
     modalSelectedStorage = product.variants.storage[0];
-
     renderModalContent();
     productModal.classList.add('active');
     document.body.style.overflow = "hidden";
 };
-
 function closeProductModal() {
     productModal.classList.remove('active');
     document.body.style.overflow = "";
 }
-
 function renderModalContent() {
     const p = currentSelectedProduct;
     const formattedPrice    = formatCurrency(p.price);
     const formattedOldPrice = p.oldPrice ? formatCurrency(p.oldPrice) : "";
     const oldPriceHTML      = p.oldPrice ? `<span class="modal-price-old">${formattedOldPrice}</span>` : "";
     const cuotaBAC          = formatCurrency(Math.round(p.price / 6));
-
     const colorsHTML = p.variants.colors.map(c => {
         const active = c.name === modalSelectedColor ? 'active' : '';
         return `<button class="color-dot-btn ${active}" data-color="${c.name}" style="background-color:${c.value};" title="${c.name}"></button>`;
     }).join('');
-
     const storageHTML = p.variants.storage.map(s => {
         const active = s === modalSelectedStorage ? 'active' : '';
         return `<button class="variant-btn ${active}" data-storage="${s}">${s}</button>`;
     }).join('');
-
     const specsHTML = p.specs ? p.specs.map(s => `<li>${s}</li>`).join('') : '';
-
     productModalBody.innerHTML = `
         <div class="modal-grid">
             <div class="modal-gallery">
@@ -476,30 +440,25 @@ function renderModalContent() {
                     <span class="modal-price">${formattedPrice}</span>
                     ${oldPriceHTML}
                 </div>
-
                 <div class="option-group">
                     <span class="option-label">Color: <strong id="modal-color-name">${modalSelectedColor}</strong></span>
                     <div class="option-selectors" id="modal-colors-container">${colorsHTML}</div>
                 </div>
-
                 <div class="option-group">
                     <span class="option-label">Capacidad:</span>
                     <div class="option-selectors" id="modal-storage-container">${storageHTML}</div>
                 </div>
-
                 <div class="option-group" style="margin-bottom:24px;">
                     <span class="option-label">Facilidades de Pago:</span>
                     <div class="trust-summary-item" style="font-weight:500; color:var(--text-primary);">
                         Lléveselo en 6 cuotas de ${cuotaBAC}/mes sin intereses.
                     </div>
                 </div>
-
                 <div class="modal-actions">
                     <button class="btn btn-primary btn-block" onclick="addModalProductToCart()">
                         Agregar al Carrito
                     </button>
                 </div>
-
                 <div class="modal-trust-summary">
                     <div class="trust-summary-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -516,7 +475,6 @@ function renderModalContent() {
                 </div>
             </div>
         </div>
-
         <div class="modal-tabs">
             <div class="modal-tab-content">
                 <h3>Descripción del Producto</h3>
@@ -527,7 +485,6 @@ function renderModalContent() {
             </div>
         </div>
     `;
-
     // Listeners de variantes dentro del modal
     productModalBody.querySelectorAll('.color-dot-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -537,7 +494,6 @@ function renderModalContent() {
             document.getElementById('modal-color-name').textContent = modalSelectedColor;
         });
     });
-
     productModalBody.querySelectorAll('.variant-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             productModalBody.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
@@ -546,30 +502,24 @@ function renderModalContent() {
         });
     });
 }
-
 /* ==========================================================================
    6. Carrito de Compras
    ========================================================================== */
-
 function openCart()  { cartDrawer.classList.add('active'); }
 function closeCart() { cartDrawer.classList.remove('active'); }
-
 window.quickAddToCart = function(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     addToCart(product, product.variants.colors[0].name, product.variants.storage[0]);
 };
-
 window.addModalProductToCart = function() {
     if (!currentSelectedProduct) return;
     addToCart(currentSelectedProduct, modalSelectedColor, modalSelectedStorage);
     closeProductModal();
 };
-
 function addToCart(product, color, storage) {
     const cartItemId = `${product.id}-${color}-${storage}`;
     const existing   = cart.find(i => i.cartItemId === cartItemId);
-
     if (existing) {
         existing.quantity += 1;
     } else {
@@ -585,12 +535,10 @@ function addToCart(product, color, storage) {
             quantity: 1
         });
     }
-
     saveCart();
     updateCartUI();
     openCart();
 }
-
 window.changeCartQty = function(cartItemId, delta) {
     const item = cart.find(i => i.cartItemId === cartItemId);
     if (!item) return;
@@ -599,24 +547,19 @@ window.changeCartQty = function(cartItemId, delta) {
     saveCart();
     updateCartUI();
 };
-
 window.removeFromCart = function(cartItemId) {
     cart = cart.filter(i => i.cartItemId !== cartItemId);
     saveCart();
     updateCartUI();
 };
-
 function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
-
 function updateCartUI() {
     const total = cart.reduce((sum, i) => sum + i.quantity, 0);
     cartBadge.textContent = total;
-
     cartItemsContainer.innerHTML = "";
     const checkoutForm = document.getElementById('cart-checkout-form');
-
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = `
             <div class="cart-empty">
@@ -631,13 +574,10 @@ function updateCartUI() {
         if (checkoutForm) checkoutForm.style.display = "none";
         return;
     }
-
     let subtotal = 0;
-
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         subtotal += itemTotal;
-
         const el = document.createElement('div');
         el.className = "cart-item";
         el.innerHTML = `
@@ -660,71 +600,54 @@ function updateCartUI() {
         `;
         cartItemsContainer.appendChild(el);
     });
-
     cartSubtotalEl.textContent = formatCurrency(subtotal);
     if (checkoutForm) checkoutForm.style.display = "block";
 }
-
 /* ==========================================================================
    7. Checkout por WhatsApp
    ========================================================================== */
-
 function checkoutCartWhatsApp() {
     if (cart.length === 0) return;
-
     const name     = document.getElementById('client-name').value.trim();
     const dni      = document.getElementById('client-dni').value.trim();
     const location = document.getElementById('client-location').value.trim();
-
     if (!name || !dni || !location) {
         alert("Por favor completa todos los datos de entrega (Nombre, DNI y Localidad) antes de enviar tu pedido.");
         return;
     }
-
     let subtotal = 0;
     let msg = "*NUEVO PEDIDO — MI PHONE HN*\n\n";
     msg += `Cliente: ${name}\nDNI: ${dni}\nCiudad/Envío: ${location}\n\n`;
     msg += `*Productos:*\n`;
-
     cart.forEach(item => {
         const t = item.price * item.quantity;
         subtotal += t;
         msg += `- ${item.title} (${item.storage} | ${item.color})\n`;
         msg += `  Cant: ${item.quantity} — Subtotal: ${formatCurrency(t)}\n`;
     });
-
     msg += `\n*TOTAL: ${formatCurrency(subtotal)}*\n\n`;
     msg += `Despacho: Choluteca, Honduras\nLogística: Rápido Cargo`;
-
     window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
 }
-
 /* ==========================================================================
    8. Calculadora de Extrafinanciamiento
    ========================================================================== */
-
 function calculateFinancing() {
     const amount = parseFloat(calcAmount.value) || 0;
     const months = parseInt(calcMonths.value) || 6;
-
     if (amount <= 0) { calcValue.textContent = "L. 0 / mes"; return; }
-
     calcValue.textContent = `${formatCurrency(Math.round(amount / months))} / mes`;
-
     let msg = `Hola Mi Phone HN, me gustaría consultar por Extrafinanciamiento:\n`;
     msg += `Monto: ${formatCurrency(amount)}\nPlazo: ${months} meses sin intereses.\n\n`;
     msg += `¿Cuáles son los requisitos con BAC o Ficohsa?`;
     calcWhatsappBtn.href = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
 }
-
 /* ==========================================================================
    9. Utilidades
    ========================================================================== */
-
 function formatCurrency(val) {
     return "L. " + val.toLocaleString('es-HN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
-
 function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme');
     const next    = current === 'light' ? 'dark' : 'light';
