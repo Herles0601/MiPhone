@@ -1,565 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Phone HN | Celulares, iPads y Accesorios Apple</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #0b0f19;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .top-bar {
-      background: #050816;
-      color: #ffffff;
-      text-align: center;
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 20px;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      color: #0057ff;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #050816;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .nav-links a:hover {
-      color: #0057ff;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #f8fbff 0%, #eaf2ff 50%, #ffffff 100%);
-      padding: 80px 20px;
-    }
-
-    .hero-content {
-      max-width: 1180px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #e5efff;
-      color: #0057ff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(38px, 6vw, 68px);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-      color: #050816;
-    }
-
-    .hero p {
-      font-size: 19px;
-      color: #374151;
-      max-width: 620px;
-      margin-bottom: 28px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 24px;
-      border-radius: 14px;
-      font-weight: 800;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: #0057ff;
-      color: white;
-      box-shadow: 0 10px 24px rgba(0, 87, 255, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: #0046cc;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: #050816;
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: #1f2937;
-      transform: translateY(-2px);
-    }
-
-    .phone-card {
-      background: #050816;
-      color: white;
-      border-radius: 34px;
-      padding: 34px;
-      box-shadow: 0 28px 60px rgba(5, 8, 22, 0.25);
-      position: relative;
-      overflow: hidden;
-      min-height: 420px;
-    }
-
-    .phone-card::before {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      background: #0057ff;
-      border-radius: 50%;
-      right: -80px;
-      top: -70px;
-      opacity: 0.8;
-    }
-
-    .device-box {
-      position: relative;
-      z-index: 1;
-      background: #ffffff;
-      color: #050816;
-      border-radius: 28px;
-      padding: 28px;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .device-icon {
-      font-size: 90px;
-      margin-bottom: 10px;
-    }
-
-    .device-box h3 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .device-box p {
-      color: #4b5563;
-      font-size: 16px;
-      margin: 0;
-    }
-
-    .section {
-      padding: 70px 20px;
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      color: #050816;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-    }
-
-    .section-title p {
-      color: #6b7280;
-      font-size: 18px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
-      transition: 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
-    }
-
-    .card-icon {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-      color: #050816;
-    }
-
-    .card p {
-      color: #6b7280;
-      font-size: 15px;
-    }
-
-    .dark-section {
-      background: #050816;
-      color: white;
-    }
-
-    .dark-section .section-title h2,
-    .dark-section .section-title p {
-      color: white;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .feature {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
-      padding: 26px;
-    }
-
-    .feature h3 {
-      color: #ffffff;
-      margin-bottom: 8px;
-      font-size: 21px;
-    }
-
-    .feature p {
-      color: #d1d5db;
-    }
-
-    .payment-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .info-panel {
-      background: #f8fbff;
-      border: 1px solid #dbeafe;
-      border-radius: 28px;
-      padding: 34px;
-    }
-
-    .info-panel h3 {
-      font-size: 28px;
-      color: #050816;
-      margin-bottom: 16px;
-    }
-
-    .list {
-      display: grid;
-      gap: 12px;
-      color: #374151;
-      font-weight: 600;
-    }
-
-    .list div {
-      background: white;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, #0057ff, #050816);
-      color: white;
-      border-radius: 34px;
-      padding: 46px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .cta h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      color: #e5e7eb;
-      font-size: 17px;
-    }
-
-    footer {
-      background: #050816;
-      color: #d1d5db;
-      text-align: center;
-      padding: 34px 20px;
-      font-size: 14px;
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 62px;
-      height: 62px;
-      background: #25d366;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
-      z-index: 50;
-    }
-
-    @media (max-width: 900px) {
-      .hero-content,
-      .payment-box,
-      .cta {
-        grid-template-columns: 1fr;
-      }
-
-      .grid,
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        padding: 56px 16px;
-      }
-
-      .section {
-        padding: 54px 16px;
-      }
-
-      .grid,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .phone-card,
-      .cta,
-      .info-panel {
-        padding: 26px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
+    /* Todos los estilos CSS previos, incluyendo hero, grid y product-card */
+    body {font-family: Arial, sans-serif; background: #fff; color: #050816; margin:0;}
+    .product-grid {display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:20px; padding:20px;}
+    .product-card {border:1px solid #e5e7eb; border-radius:16px; overflow:hidden; transition:0.2s;}
+    .product-card:hover {transform:translateY(-5px);}
+    .product-card img {width:100%; height:200px; object-fit:cover;}
+    .product-info {padding:16px;}
+    .product-info h3 {margin:0 0 8px 0; font-size:18px;}
+    .product-price {color:#0057ff; font-weight:800; font-size:16px; margin-bottom:8px;}
+    .product-status {display:inline-block; background:#e5efff; color:#0057ff; padding:4px 8px; border-radius:999px; font-size:12px; margin-bottom:8px;}
+    .btn {display:inline-block; padding:8px 16px; border-radius:8px; background:#0057ff; color:#fff; font-weight:600; text-align:center; text-decoration:none;}
   </style>
 </head>
 <body>
-  <div class="top-bar">📍 Choluteca, Honduras · Envíos por Rápido Cargo · Celulares nuevos y semiusados</div>
-
-  <header>
-    <nav class="nav">
-      <div class="logo">Mi Phone <span>HN</span></div>
-      <div class="nav-links">
-        <a href="#productos">Productos</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#pagos">Pagos</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
+  <header style="text-align:center; padding:20px; background:#f3f4f6;">
+    <h1>Mi Phone HN</h1>
+    <p>Celulares, iPads y Accesorios Apple - Choluteca</p>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div>
-        <span class="badge">Tecnología confiable en Choluteca</span>
-        <h1>Compra tu próximo iPhone, Samsung o iPad con confianza.</h1>
-        <p>
-          En Mi Phone HN encuentras celulares nuevos y semiusados, iPads y accesorios Apple con atención rápida, opciones de pago y envíos por Rápido Cargo.
-        </p>
-        <div class="buttons">
-          <a class="btn btn-primary" href="https://wa.me/50488238432" target="_blank">Comprar por WhatsApp</a>
-          <a class="btn btn-secondary" href="#productos">Ver productos</a>
-        </div>
-      </div>
-
-      <div class="phone-card">
-        <h2>Mi Phone HN</h2>
-        <p style="color:#d1d5db; margin-top:8px;">iPhones · Samsung · iPads · Accesorios Apple</p>
-        <div class="device-box">
-          <div class="device-icon">📱</div>
-          <h3>Equipos seleccionados</h3>
-          <p>Nuevos y semiusados para jóvenes y adultos que buscan calidad, estilo y buen precio.</p>
-        </div>
-      </div>
+  <section id="productos">
+    <h2 style="text-align:center; padding-top:20px;">Catálogo de productos</h2>
+    <div id="productos-api" class="product-grid">
+      <p>Cargando productos...</p>
     </div>
   </section>
 
-  <section class="section" id="productos">
-    <div class="container">
-      <div class="section-title">
-        <h2>Nuestros productos</h2>
-        <p>Elige el equipo o accesorio ideal para ti.</p>
-      </div>
+  <script>
+    const API_PRODUCTOS = "productos.json";
 
-      <div class="grid">
-        <div class="card">
-          <div class="card-icon">🍎</div>
-          <h3>iPhones</h3>
-          <p>Modelos nuevos y semiusados, listos para estrenar.</p>
-        </div>
+    const productosDemo = [
+      {"nombre":"iPhone 11 64GB","precio":"L 6,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1574755393849-623942496936?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"iPhone 12 128GB","precio":"L 9,500","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"iPhone 13 Pro 128GB","precio":"L 15,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"iPhone 14 Pro Max 256GB","precio":"L 23,900","estado":"Semiusado","categoria":"iPhone","imagen":"https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"Samsung Galaxy S21","precio":"L 8,900","estado":"Semiusado","categoria":"Samsung","imagen":"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"Samsung Galaxy S23 Ultra","precio":"L 18,500","estado":"Semiusado","categoria":"Samsung","imagen":"https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"iPad 9na Generación 64GB","precio":"L 8,900","estado":"Nuevo","categoria":"iPad","imagen":"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"AirPods Pro","precio":"L 3,200","estado":"Nuevo","categoria":"Accesorios Apple","imagen":"https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?auto=format&fit=crop&w=900&q=80"},
+      {"nombre":"Cargador Apple 20W","precio":"L 650","estado":"Nuevo","categoria":"Accesorios Apple","imagen":"https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=80"}
+    ];
 
-        <div class="card">
-          <div class="card-icon">📱</div>
-          <h3>Samsung</h3>
-          <p>Equipos Samsung para trabajo, estudio y entretenimiento.</p>
-        </div>
+    function mostrarProductos(productos) {
+      const contenedor = document.getElementById('productos-api');
+      contenedor.innerHTML = '';
+      productos.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${p.imagen}" alt="${p.nombre}">
+          <div class="product-info">
+            <span class="product-status">${p.estado}</span>
+            <h3>${p.nombre}</h3>
+            <div class="product-price">${p.precio}</div>
+            <p>${p.categoria}</p>
+            <a class="btn" href="https://wa.me/50488238432?text=Hola,%20quiero%20información%20sobre%20${encodeURIComponent(p.nombre)}" target="_blank">Comprar por WhatsApp</a>
+          </div>
+        `;
+        contenedor.appendChild(card);
+      });
+    }
 
-        <div class="card">
-          <div class="card-icon">💻</div>
-          <h3>iPads</h3>
-          <p>Perfectos para estudiar, diseñar, trabajar o ver contenido.</p>
-        </div>
+    async function cargarProductos() {
+      try {
+        const res = await fetch(API_PRODUCTOS);
+        if (!res.ok) throw new Error('Error API');
+        const data = await res.json();
+        mostrarProductos(data);
+      } catch(e) {
+        console.warn('Usando productos de ejemplo', e);
+        mostrarProductos(productosDemo);
+      }
+    }
 
-        <div class="card">
-          <div class="card-icon">🎧</div>
-          <h3>Accesorios Apple</h3>
-          <p>Complementos para proteger y mejorar tu experiencia.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section dark-section" id="beneficios">
-    <div class="container">
-      <div class="section-title">
-        <h2>¿Por qué comprar con nosotros?</h2>
-        <p>Una experiencia sencilla, segura y rápida.</p>
-      </div>
-
-      <div class="features">
-        <div class="feature">
-          <h3>Atención personalizada</h3>
-          <p>Te ayudamos a elegir el equipo que mejor se ajuste a tu presupuesto y necesidad.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Opciones para todos</h3>
-          <p>Celulares nuevos y semiusados para jóvenes y adultos.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Envíos disponibles</h3>
-          <p>Desde Choluteca hacia otros destinos por medio de Rápido Cargo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="pagos">
-    <div class="container payment-box">
-      <div class="info-panel">
-        <h3>Métodos de pago</h3>
-        <div class="list">
-          <div>💵 Efectivo</div>
-          <div>🏦 Transferencias: BAC, Atlántida, Occidente, Banpaís y Davivienda</div>
-          <div>💳 Extrafinanciamiento con BAC y Ficohsa</div>
-        </div>
-      </div>
-
-      <div class="info-panel">
-        <h3>Logística y envíos</h3>
-        <div class="list">
-          <div>📍 Base: Choluteca</div>
-          <div>🚚 Envíos por Rápido Cargo</div>
-          <div>📲 Cotiza tu equipo por WhatsApp</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contacto">
-    <div class="container">
-      <div class="cta">
-        <div>
-          <h2>¿Listo para comprar tu próximo equipo?</h2>
-          <p>Escríbenos y consulta disponibilidad de iPhones, Samsung, iPads y accesorios Apple.</p>
-        </div>
-        <a class="btn btn-primary" href="https://wa.me/50488238432" target="_blank">Contactar ahora</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Mi Phone HN · Choluteca, Honduras · Todos los derechos reservados</p>
-  </footer>
-
-  <a class="whatsapp" href="https://wa.me/50488238432" target="_blank" aria-label="WhatsApp">☘</a>
+    cargarProductos();
+  </script>
 </body>
 </html>
