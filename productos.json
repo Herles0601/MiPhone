@@ -1,65 +1,98 @@
 [
   {
-    "nombre": "iPhone 11 64GB",
-    "precio": "L 6,900",
-    "estado": "Semiusado",
-    "categoria": "iPhone",
-    "imagen": "https://images.unsplash.com/photo-1574755393849-623942496936?auto=format&fit=crop&w=900&q=80"
+    "id": 1,
+    "title": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "price": 29500,
+    "oldPrice": 32000,
+    "category": "iphones",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://via.placeholder.com/150x250?text=iPhone+15+Pro+Max",
+    "description": "El iPhone más potente de Apple con chasis de titanio de calidad aeroespacial, chip A17 Pro ultra rápido y el sistema de cámaras más avanzado en un iPhone."
   },
   {
-    "nombre": "iPhone 12 128GB",
-    "precio": "L 9,500",
-    "estado": "Semiusado",
-    "categoria": "iPhone",
-    "imagen": "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=80"
+    "id": 2,
+    "title": "iPhone 13 Pro",
+    "brand": "Apple",
+    "price": 15900,
+    "oldPrice": 18500,
+    "category": "iphones",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://via.placeholder.com/150x250?text=iPhone+13+Pro",
+    "description": "Increíble rendimiento y pantalla ProMotion de 120Hz. Autonomía sobresaliente y cámaras que redefinieron la fotografía móvil."
   },
   {
-    "nombre": "iPhone 13 Pro 128GB",
-    "precio": "L 15,900",
-    "estado": "Semiusado",
-    "categoria": "iPhone",
-    "imagen": "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=900&q=80"
+    "id": 3,
+    "title": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "price": 27900,
+    "oldPrice": 31000,
+    "category": "samsung",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://via.placeholder.com/150x250?text=Galaxy+S24+Ultra",
+    "description": "Lidera la era de la IA móvil con Galaxy AI. Fotografía de 200 MP y S Pen integrado para máxima productividad."
   },
   {
-    "nombre": "iPhone 14 Pro Max 256GB",
-    "precio": "L 23,900",
-    "estado": "Semiusado",
-    "categoria": "iPhone",
-    "imagen": "https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=900&q=80"
+    "id": 4,
+    "title": "iPhone 12",
+    "brand": "Apple",
+    "price": 10500,
+    "oldPrice": 12500,
+    "category": "iphones",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://via.placeholder.com/150x250?text=iPhone+12",
+    "description": "Diseño de bordes planos icónico, conectividad 5G, pantalla Super Retina XDR y sistema de doble cámara trasera avanzado."
   },
   {
-    "nombre": "Samsung Galaxy S21",
-    "precio": "L 8,900",
-    "estado": "Semiusado",
-    "categoria": "Samsung",
-    "imagen": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=80"
+    "id": 5,
+    "title": "iPad Air (5ta Generación)",
+    "brand": "Apple",
+    "price": 12900,
+    "oldPrice": 14500,
+    "category": "ipads",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://via.placeholder.com/150x250?text=iPad+Air+5G",
+    "description": "Potenciada por el chip M1 de Apple. Ideal para estudiantes, diseñadores y profesionales que buscan portabilidad y potencia extrema."
   },
   {
-    "nombre": "Samsung Galaxy S23 Ultra",
-    "precio": "L 18,500",
-    "estado": "Semiusado",
-    "categoria": "Samsung",
-    "imagen": "https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&w=900&q=80"
+    "id": 6,
+    "title": "Samsung Galaxy A55 5G",
+    "brand": "Samsung",
+    "price": 9500,
+    "oldPrice": 11000,
+    "category": "samsung",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://via.placeholder.com/150x250?text=Galaxy+A55+5G",
+    "description": "Excelente relación calidad-precio. Diseño premium, procesador Exynos potente y resistencia al agua IP67."
   },
   {
-    "nombre": "iPad 9na Generación 64GB",
-    "precio": "L 8,900",
-    "estado": "Nuevo",
-    "categoria": "iPad",
-    "imagen": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80"
+    "id": 7,
+    "title": "Cargador Apple USB-C de 20W",
+    "brand": "Apple",
+    "price": 750,
+    "oldPrice": 950,
+    "category": "accessories",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://via.placeholder.com/150x150?text=Cargador+USB-C",
+    "description": "Adaptador USB-C original de Apple de 20W. Carga tu iPhone al 50% en solo 30 minutos de forma segura."
   },
   {
-    "nombre": "AirPods Pro",
-    "precio": "L 3,200",
-    "estado": "Nuevo",
-    "categoria": "Accesorios Apple",
-    "imagen": "https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?auto=format&fit=crop&w=900&q=80"
-  },
-  {
-    "nombre": "Cargador Apple 20W",
-    "precio": "L 650",
-    "estado": "Nuevo",
-    "categoria": "Accesorios Apple",
-    "imagen": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=80"
+    "id": 8,
+    "title": "AirPods Pro (2da Generación)",
+    "brand": "Apple",
+    "price": 5900,
+    "oldPrice": 6800,
+    "category": "accessories",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://via.placeholder.com/150x150?text=AirPods+Pro+2G",
+    "description": "Cancelación Activa de Ruido, audio espacial personalizado y estuche de carga MagSafe. La experiencia de audio más avanzada de Apple."
   }
 ]
