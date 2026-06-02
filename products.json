@@ -1,15 +1,266 @@
 [
   {
     "id": 1,
-    "nombre": "iPhone 13 Pro Max",
-    "marca": "Apple",
-    "categoria": "iphones",
-    "condicion": "seminuevo",
-    "estado": "Seminuevo",
-    "almacenamiento": "256GB",
-    "color": "Sierra Blue",
-    "precio": 18500,
-    "garantia": "90 días",
-    "imagen": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-1.jpg"
+    "title": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "price": 29500,
+    "oldPrice": 32000,
+    "category": "iphones",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg",
+    "description": "iPhone premium con titanio, chip A17 Pro y cámara avanzada.",
+    "specs": [
+      "Pantalla Super Retina XDR de 6.7 pulgadas",
+      "Chip A17 Pro",
+      "Cámara principal de 48 MP",
+      "USB-C",
+      "Face ID"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Titanio Natural", "value": "#bebeb6" },
+        { "name": "Titanio Azul", "value": "#2f4452" },
+        { "name": "Titanio Negro", "value": "#3b3c3e" }
+      ],
+      "storage": ["256GB", "512GB", "1TB"]
+    }
+  },
+  {
+    "id": 2,
+    "title": "iPhone 13 Pro",
+    "brand": "Apple",
+    "price": 15900,
+    "oldPrice": 18500,
+    "category": "iphones",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-01.jpg",
+    "description": "Equipo seminuevo grado A+ con pantalla ProMotion y gran rendimiento.",
+    "specs": [
+      "Pantalla Super Retina XDR de 6.1 pulgadas",
+      "ProMotion 120Hz",
+      "Chip A15 Bionic",
+      "Triple cámara Pro",
+      "Face ID"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Sierra Blue", "value": "#a7c1d6" },
+        { "name": "Graphite", "value": "#4e4f50" },
+        { "name": "Gold", "value": "#fae0c5" }
+      ],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 3,
+    "title": "iPhone 14",
+    "brand": "Apple",
+    "price": 18500,
+    "oldPrice": 20500,
+    "category": "iphones",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-1.jpg",
+    "description": "iPhone moderno con excelente cámara, batería y rendimiento.",
+    "specs": [
+      "Pantalla OLED de 6.1 pulgadas",
+      "Chip A15 Bionic",
+      "Cámara dual de 12 MP",
+      "Face ID",
+      "Carga MagSafe"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Midnight", "value": "#1c1c1e" },
+        { "name": "Blue", "value": "#a7c7e7" },
+        { "name": "Purple", "value": "#d8bfd8" }
+      ],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 4,
+    "title": "iPhone 12",
+    "brand": "Apple",
+    "price": 10500,
+    "oldPrice": 12500,
+    "category": "iphones",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-1.jpg",
+    "description": "Diseño clásico con bordes planos, pantalla OLED y conectividad 5G.",
+    "specs": [
+      "Pantalla Super Retina XDR",
+      "Chip A14 Bionic",
+      "Cámara dual",
+      "5G",
+      "Face ID"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Negro", "value": "#111111" },
+        { "name": "Blanco", "value": "#f5f5f7" },
+        { "name": "Azul", "value": "#203a43" }
+      ],
+      "storage": ["64GB", "128GB"]
+    }
+  },
+  {
+    "id": 5,
+    "title": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "price": 27900,
+    "oldPrice": 31000,
+    "category": "samsung",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-0.jpg",
+    "description": "Samsung premium con Galaxy AI, cámara de 200 MP y S Pen.",
+    "specs": [
+      "Pantalla Dynamic AMOLED 2X",
+      "Snapdragon 8 Gen 3",
+      "Cámara de 200 MP",
+      "S Pen integrado",
+      "Batería de 5000 mAh"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Titanium Gray", "value": "#8e8e93" },
+        { "name": "Titanium Violet", "value": "#4b415a" },
+        { "name": "Titanium Black", "value": "#1c1c1e" }
+      ],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 6,
+    "title": "Samsung Galaxy S23 Ultra",
+    "brand": "Samsung",
+    "price": 22500,
+    "oldPrice": 25000,
+    "category": "samsung",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-ultra-5g-1.jpg",
+    "description": "Potente gama alta con S Pen, excelente zoom y pantalla AMOLED.",
+    "specs": [
+      "Pantalla AMOLED de 6.8 pulgadas",
+      "Snapdragon 8 Gen 2",
+      "Cámara de 200 MP",
+      "S Pen",
+      "Carga rápida"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Phantom Black", "value": "#111111" },
+        { "name": "Green", "value": "#4b6043" }
+      ],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 7,
+    "title": "Samsung Galaxy A55 5G",
+    "brand": "Samsung",
+    "price": 9500,
+    "oldPrice": 11000,
+    "category": "samsung",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a55-1.jpg",
+    "description": "Excelente opción gama media con pantalla AMOLED y 5G.",
+    "specs": [
+      "Pantalla Super AMOLED 120Hz",
+      "Cámara principal de 50 MP",
+      "Batería de 5000 mAh",
+      "5G",
+      "Resistencia IP67"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Awesome Navy", "value": "#1a237e" },
+        { "name": "Awesome Iceblue", "value": "#e3f2fd" }
+      ],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 8,
+    "title": "iPad Air 5ta Generación",
+    "brand": "Apple",
+    "price": 12900,
+    "oldPrice": 14500,
+    "category": "ipads",
+    "condition": "seminuevo",
+    "badge": "Seminuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-2022-1.jpg",
+    "description": "iPad con chip M1, ideal para estudio, diseño y productividad.",
+    "specs": [
+      "Pantalla Liquid Retina de 10.9 pulgadas",
+      "Chip M1",
+      "Compatible con Apple Pencil",
+      "USB-C",
+      "Cámara frontal ultra gran angular"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Gris Espacial", "value": "#4e4f50" },
+        { "name": "Azul", "value": "#a7c1d6" },
+        { "name": "Púrpura", "value": "#d7c3eb" }
+      ],
+      "storage": ["64GB", "256GB"]
+    }
+  },
+  {
+    "id": 9,
+    "title": "AirPods Pro 2da Generación",
+    "brand": "Apple",
+    "price": 5900,
+    "oldPrice": 6800,
+    "category": "accessories",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-pro-2nd-gen-1.jpg",
+    "description": "Audífonos premium con cancelación activa de ruido y audio espacial.",
+    "specs": [
+      "Chip H2",
+      "Cancelación activa de ruido",
+      "Audio espacial",
+      "Estuche MagSafe",
+      "Hasta 6 horas de reproducción"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Blanco", "value": "#ffffff" }
+      ],
+      "storage": ["Estándar"]
+    }
+  },
+  {
+    "id": 10,
+    "title": "Cargador Apple USB-C 20W",
+    "brand": "Apple",
+    "price": 750,
+    "oldPrice": 950,
+    "category": "accessories",
+    "condition": "nuevo",
+    "badge": "Nuevo",
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJA3?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1603730167000",
+    "description": "Adaptador de carga rápida USB-C compatible con iPhone y iPad.",
+    "specs": [
+      "Carga rápida de 20W",
+      "Puerto USB-C",
+      "Compatible con iPhone",
+      "Compatible con iPad",
+      "Diseño compacto"
+    ],
+    "variants": {
+      "colors": [
+        { "name": "Blanco", "value": "#ffffff" }
+      ],
+      "storage": ["Estándar"]
+    }
   }
 ]
