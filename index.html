@@ -8,53 +8,103 @@
 </head>
 <body>
 
-  <header>
-    <h1>MyFon</h1>
-    <p>Celulares nuevos, usados y exportados en Choluteca, Honduras</p>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">My<span>Fon</span></div>
+      <a href="#catalogo" class="nav-btn">Ver catálogo</a>
+    </nav>
+
+    <section class="hero-content">
+      <div>
+        <span class="badge">Choluteca, Honduras</span>
+        <h1>Celulares nuevos, usados y exportados</h1>
+        <p>
+          Encuentra iPhone, Samsung, accesorios y dispositivos seleccionados.
+          Compra fácil, rápido y directo por WhatsApp.
+        </p>
+        <a href="#catalogo" class="hero-btn">Explorar productos</a>
+      </div>
+
+      <div class="phone-showcase">
+        <div class="phone-card phone-1"></div>
+        <div class="phone-card phone-2"></div>
+        <div class="glow"></div>
+      </div>
+    </section>
   </header>
 
-  <main>
+  <section class="features">
+    <div>
+      <h3>📱 Equipos seleccionados</h3>
+      <p>Nuevos, usados y exportados.</p>
+    </div>
+    <div>
+      <h3>🚚 Envíos disponibles</h3>
+      <p>Coordinación desde Choluteca.</p>
+    </div>
+    <div>
+      <h3>💬 Compra por WhatsApp</h3>
+      <p>Pedido directo al vendedor.</p>
+    </div>
+  </section>
+
+  <main id="catalogo">
+    <section class="section-title">
+      <h2>Catálogo disponible</h2>
+      <p>Busca, filtra y agrega productos a tu carrito.</p>
+    </section>
+
     <section class="filtros">
-      <input type="text" id="buscador" placeholder="Buscar producto..." />
+      <input type="text" id="buscador" placeholder="Buscar iPhone, Samsung, AirPods..." />
       <select id="filtroMarca">
         <option value="todos">Todas las marcas</option>
       </select>
     </section>
 
-    <section id="productos" class="productos"></section>
+    <section class="layout">
+      <section id="productos" class="productos"></section>
 
-    <aside class="carrito">
-      <h2>Carrito</h2>
-      <div id="listaCarrito"></div>
-      <h3>Total: L. <span id="total">0</span></h3>
+      <aside class="carrito">
+        <h2>🛒 Carrito</h2>
+        <div id="listaCarrito"></div>
 
-      <h2>Datos del cliente</h2>
+        <div class="total-box">
+          Total: L. <span id="total">0</span>
+        </div>
 
-      <input type="text" id="nombre" placeholder="Nombre del cliente" />
-      <input type="tel" id="telefono" placeholder="Teléfono" />
-      <input type="text" id="ciudad" placeholder="Ciudad o departamento" />
+        <h2>Datos del cliente</h2>
 
-      <select id="metodoPago">
-        <option value="">Método de pago</option>
-        <option value="Efectivo">Efectivo</option>
-        <option value="Transferencia BAC">Transferencia BAC</option>
-        <option value="Transferencia Atlántida">Transferencia Atlántida</option>
-        <option value="Transferencia Occidente">Transferencia Occidente</option>
-        <option value="Transferencia Banpaís">Transferencia Banpaís</option>
-        <option value="Transferencia Davivienda">Transferencia Davivienda</option>
-      </select>
+        <input type="text" id="nombre" placeholder="Nombre del cliente" />
+        <input type="tel" id="telefono" placeholder="Teléfono" />
+        <input type="text" id="ciudad" placeholder="Ciudad o departamento" />
 
-      <select id="envio">
-        <option value="">Tipo de entrega</option>
-        <option value="Retiro en Choluteca">Retiro en Choluteca</option>
-        <option value="Envío por Rápido Cargo">Envío por Rápido Cargo</option>
-      </select>
+        <select id="metodoPago">
+          <option value="">Método de pago</option>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia BAC">Transferencia BAC</option>
+          <option value="Transferencia Atlántida">Transferencia Atlántida</option>
+          <option value="Transferencia Occidente">Transferencia Occidente</option>
+          <option value="Transferencia Banpaís">Transferencia Banpaís</option>
+          <option value="Transferencia Davivienda">Transferencia Davivienda</option>
+        </select>
 
-      <textarea id="observaciones" placeholder="Observaciones"></textarea>
+        <select id="envio">
+          <option value="">Tipo de entrega</option>
+          <option value="Retiro en Choluteca">Retiro en Choluteca</option>
+          <option value="Envío por Rápido Cargo">Envío por Rápido Cargo</option>
+        </select>
 
-      <button id="finalizarCompra">Enviar pedido por WhatsApp</button>
-    </aside>
+        <textarea id="observaciones" placeholder="Observaciones del pedido"></textarea>
+
+        <button id="finalizarCompra">Enviar pedido por WhatsApp</button>
+      </aside>
+    </section>
   </main>
+
+  <footer>
+    <h3>MyFon</h3>
+    <p>Catálogo digital de celulares en Choluteca, Honduras.</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
