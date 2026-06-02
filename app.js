@@ -8,12 +8,21 @@ const buscador = document.getElementById("buscador");
 const filtroMarca = document.getElementById("filtroMarca");
 const finalizarCompra = document.getElementById("finalizarCompra");
 
-fetch("products.json")
-  .then(response => response.json())
+fetch("./products.json")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("No se pudo cargar products.json");
+    }
+    return response.json();
+  })
   .then(data => {
     productos = data;
     mostrarProductos(productos);
     cargarMarcas();
+  })
+  .catch(error => {
+    console.error("Error cargando productos:", error);
+    contenedorProductos.innerHTML = "<p>No se pudieron cargar los productos.</p>";
   });
 
 function mostrarProductos(lista) {
