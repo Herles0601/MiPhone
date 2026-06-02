@@ -1,208 +1,46 @@
 [
-    {
-        "id": 1,
-        "title": "iPhone 15 Pro Max",
-        "brand": "Apple",
-        "price": 29500,
-        "oldPrice": 32000,
-        "category": "iphones",
-        "condition": "nuevo",
-        "badge": "Nuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' width='100' height='150'><rect x='15' y='10' width='70' height='130' rx='15' fill='%232c2c2e' stroke='%238e8e93' stroke-width='2'/><rect x='18' y='13' width='64' height='124' rx='12' fill='%231c1c1e'/><circle cx='50' cy='20' r='2' fill='%238e8e93'/><circle cx='35' cy='50' r='12' fill='%232c2c2e' opacity='0.3'/><circle cx='65' cy='55' r='10' fill='%232c2c2e' opacity='0.3'/></svg>",
-        "description": "El iPhone más potente de Apple con chasis de titanio de calidad aeroespacial, chip A17 Pro ultra rápido y el sistema de cámaras más avanzado en un iPhone.",
-        "specs": [
-            "Pantalla Super Retina XDR OLED de 6.7 pulgadas",
-            "Chip A17 Pro con GPU de 6 núcleos",
-            "Cámara principal de 48 MP con teleobjetivo 5x",
-            "Puerto USB-C compatible con USB 3",
-            "Batería de hasta 29 horas de reproducción de video"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Titanio Natural", "value": "#bebeb6" },
-                { "name": "Titanio Azul",    "value": "#2f4452" },
-                { "name": "Titanio Negro",   "value": "#3b3c3e" }
-            ],
-            "storage": ["256GB", "512GB", "1TB"]
-        }
-    },
-    {
-        "id": 2,
-        "title": "iPhone 13 Pro",
-        "brand": "Apple",
-        "price": 15900,
-        "oldPrice": 18500,
-        "category": "iphones",
-        "condition": "seminuevo",
-        "badge": "Seminuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' width='100' height='150'><rect x='15' y='10' width='70' height='130' rx='15' fill='%233a3d40' stroke='%23bebeb6' stroke-width='2'/><rect x='18' y='13' width='64' height='124' rx='12' fill='%231c1c1e'/><circle cx='50' cy='18' r='3' fill='%238e8e93'/><circle cx='50' cy='40' r='10' fill='%233a3d40' opacity='0.4'/></svg>",
-        "description": "Increíble rendimiento y pantalla ProMotion de 120Hz. Autonomía sobresaliente y cámaras que redefinieron la fotografía móvil.",
-        "specs": [
-            "Pantalla Super Retina XDR con ProMotion (120Hz)",
-            "Chip A15 Bionic con GPU de 5 núcleos",
-            "Sistema de cámaras Pro de 12 MP",
-            "Escáner LiDAR para retratos en modo Noche",
-            "Garantía de salud de batería de 85% o superior"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Sierra Blue", "value": "#a7c1d6" },
-                { "name": "Graphite",    "value": "#4e4f50" },
-                { "name": "Gold",        "value": "#fae0c5" }
-            ],
-            "storage": ["128GB", "256GB"]
-        }
-    },
-    {
-        "id": 3,
-        "title": "Samsung Galaxy S24 Ultra",
-        "brand": "Samsung",
-        "price": 27900,
-        "oldPrice": 31000,
-        "category": "samsung",
-        "condition": "nuevo",
-        "badge": "Nuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' width='100' height='150'><rect x='15' y='10' width='70' height='130' rx='6' fill='%23333333' stroke='%23555555' stroke-width='2'/><rect x='18' y='13' width='64' height='124' rx='4' fill='%231c1c1e'/><circle cx='30' cy='30' r='8' fill='%23333333' opacity='0.3'/></svg>",
-        "description": "Lidera la era de la IA móvil con Galaxy AI. Fotografía de 200 MP y S Pen integrado para máxima productividad.",
-        "specs": [
-            "Pantalla Dynamic AMOLED 2X de 6.8 pulgadas QHD+",
-            "Procesador Snapdragon 8 Gen 3 para Galaxy",
-            "Cámara principal de 200 MP con Zoom Óptico Quad",
-            "S Pen integrado",
-            "Marco de Titanio ultra resistente"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Titanium Gray",   "value": "#8e8e93" },
-                { "name": "Titanium Yellow", "value": "#f7e7c4" },
-                { "name": "Titanium Violet", "value": "#4b415a" }
-            ],
-            "storage": ["256GB", "512GB"]
-        }
-    },
-    {
-        "id": 4,
-        "title": "iPhone 12",
-        "brand": "Apple",
-        "price": 10500,
-        "oldPrice": 12500,
-        "category": "iphones",
-        "condition": "seminuevo",
-        "badge": "Seminuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' width='100' height='150'><rect x='16' y='10' width='68' height='130' rx='14' fill='%231c1c1e' stroke='%233a3d40' stroke-width='2'/><rect x='19' y='13' width='62' height='124' rx='11' fill='%23111'/><circle cx='50' cy='18' r='4' fill='%233a3d40'/></svg>",
-        "description": "Diseño de bordes planos icónico, conectividad 5G, pantalla Super Retina XDR y sistema de doble cámara trasera avanzado.",
-        "specs": [
-            "Pantalla Super Retina XDR OLED de 6.1 pulgadas",
-            "Chip A14 Bionic",
-            "Sistema de doble cámara de 12 MP",
-            "Frente de Ceramic Shield",
-            "Inspección técnica de 30 puntos aprobada"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Negro", "value": "#1c1c1e" },
-                { "name": "Blanco", "value": "#f5f5f7" },
-                { "name": "Azul",   "value": "#203a43" }
-            ],
-            "storage": ["64GB", "128GB"]
-        }
-    },
-    {
-        "id": 5,
-        "title": "iPad Air (5ta Generación)",
-        "brand": "Apple",
-        "price": 12900,
-        "oldPrice": 14500,
-        "category": "ipads",
-        "condition": "seminuevo",
-        "badge": "Seminuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 150' width='120' height='150'><rect x='10' y='10' width='100' height='130' rx='10' fill='%232c2c2e' stroke='%238e8e93' stroke-width='2'/><rect x='14' y='14' width='92' height='122' rx='7' fill='%23111'/><circle cx='60' cy='140' r='3' fill='%238e8e93'/></svg>",
-        "description": "Potenciada por el chip M1 de Apple. Ideal para estudiantes, diseñadores y profesionales.",
-        "specs": [
-            "Pantalla Liquid Retina de 10.9 pulgadas con True Tone",
-            "Chip M1 de Apple con Neural Engine",
-            "Cámara trasera de 12 MP y frontal de 12 MP",
-            "Compatible con Apple Pencil (2da generación)",
-            "USB-C de alta velocidad"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Gris Espacial", "value": "#4e4f50" },
-                { "name": "Azul",          "value": "#a7c1d6" },
-                { "name": "Púrpura",       "value": "#d7c3eb" }
-            ],
-            "storage": ["64GB", "256GB"]
-        }
-    },
-    {
-        "id": 6,
-        "title": "Samsung Galaxy A55 5G",
-        "brand": "Samsung",
-        "price": 9500,
-        "oldPrice": 11000,
-        "category": "samsung",
-        "condition": "nuevo",
-        "badge": "Nuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' width='100' height='150'><rect x='15' y='10' width='70' height='130' rx='10' fill='%23444' stroke='%23666' stroke-width='2'/><rect x='18' y='13' width='64' height='124' rx='8' fill='%231c1c1e'/></svg>",
-        "description": "Excelente relación calidad-precio. Diseño premium, procesador Exynos potente y resistencia al agua IP67.",
-        "specs": [
-            "Pantalla Super AMOLED de 6.6 pulgadas a 120Hz",
-            "Procesador Exynos 1480",
-            "Cámara principal de 50 MP con OIS",
-            "Batería de 5,000 mAh con carga rápida",
-            "Certificación IP67"
-        ],
-        "variants": {
-            "colors": [
-                { "name": "Awesome Iceblue", "value": "#e3f2fd" },
-                { "name": "Awesome Navy",    "value": "#1a237e" }
-            ],
-            "storage": ["128GB", "256GB"]
-        }
-    },
-    {
-        "id": 7,
-        "title": "Cargador Apple USB-C de 20W",
-        "brand": "Apple",
-        "price": 750,
-        "oldPrice": 950,
-        "category": "accessories",
-        "condition": "nuevo",
-        "badge": "Nuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'><rect x='30' y='25' width='40' height='40' rx='8' fill='%23f5f5f7' stroke='%23d2d2d7' stroke-width='2'/><rect x='42' y='65' width='4' height='12' fill='%23d2d2d7'/><rect x='54' y='65' width='4' height='12' fill='%23d2d2d7'/><circle cx='50' cy='45' r='4' fill='%23bebeb6'/></svg>",
-        "description": "Adaptador USB-C original de Apple de 20W. Carga tu iPhone al 50% en solo 30 minutos.",
-        "specs": [
-            "Carga rápida de 20W",
-            "Puerto USB-C universal",
-            "Protección contra sobrecargas",
-            "Compatible con iPhones del modelo 8 en adelante"
-        ],
-        "variants": {
-            "colors": [{ "name": "Blanco", "value": "#ffffff" }],
-            "storage": ["Estándar"]
-        }
-    },
-    {
-        "id": 8,
-        "title": "AirPods Pro (2da Generación)",
-        "brand": "Apple",
-        "price": 5900,
-        "oldPrice": 6800,
-        "category": "accessories",
-        "condition": "nuevo",
-        "badge": "Nuevo",
-        "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'><rect x='25' y='30' width='50' height='40' rx='15' fill='%23ffffff' stroke='%23d2d2d7' stroke-width='2'/><circle cx='50' cy='50' r='3' fill='%2334c759'/></svg>",
-        "description": "Cancelación Activa de Ruido, audio espacial personalizado y estuche MagSafe. La mejor experiencia de audio de Apple.",
-        "specs": [
-            "Chip H2 de Apple",
-            "Cancelación Activa de Ruido Inteligente",
-            "Audio espacial con seguimiento dinámico",
-            "Hasta 6 horas de reproducción",
-            "Compatible con MagSafe"
-        ],
-        "variants": {
-            "colors": [{ "name": "Blanco", "value": "#ffffff" }],
-            "storage": ["Estándar"]
-        }
-    }
+  {
+    "id": 1,
+    "nombre": "iPhone 13 Pro Max",
+    "marca": "Apple",
+    "estado": "Usado",
+    "almacenamiento": "256GB",
+    "color": "Sierra Blue",
+    "precio": 18500,
+    "disponible": true,
+    "imagen": "https://via.placeholder.com/300x300?text=iPhone+13+Pro+Max"
+  },
+  {
+    "id": 2,
+    "nombre": "iPhone 14",
+    "marca": "Apple",
+    "estado": "Nuevo",
+    "almacenamiento": "128GB",
+    "color": "Midnight",
+    "precio": 21500,
+    "disponible": true,
+    "imagen": "https://via.placeholder.com/300x300?text=iPhone+14"
+  },
+  {
+    "id": 3,
+    "nombre": "Samsung Galaxy S24 Ultra",
+    "marca": "Samsung",
+    "estado": "Nuevo",
+    "almacenamiento": "256GB",
+    "color": "Titanium Gray",
+    "precio": 27900,
+    "disponible": true,
+    "imagen": "https://via.placeholder.com/300x300?text=S24+Ultra"
+  },
+  {
+    "id": 4,
+    "nombre": "AirPods Pro 2da Generación",
+    "marca": "Apple",
+    "estado": "Nuevo",
+    "almacenamiento": "No aplica",
+    "color": "Blanco",
+    "precio": 5900,
+    "disponible": true,
+    "imagen": "https://via.placeholder.com/300x300?text=AirPods+Pro"
+  }
 ]
