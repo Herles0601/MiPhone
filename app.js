@@ -8,7 +8,7 @@ const buscador = document.getElementById("buscador");
 const filtroMarca = document.getElementById("filtroMarca");
 const finalizarCompra = document.getElementById("finalizarCompra");
 
-fetch("productos.json")
+fetch("products.json")
   .then(response => response.json())
   .then(data => {
     productos = data;
