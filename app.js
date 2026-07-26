@@ -222,9 +222,13 @@ function renderProducts() {
 
     const condition = String(product.condition || "").toLowerCase();
     const badgeClass = condition === "nuevo" ? "tag-nuevo" : "tag-seminuevo";
-    const oldPriceHTML = product.oldPrice
-      ? `<span class="price-old">${formatCurrency(product.oldPrice)}</span>`
+    const storageOptions = getStorageOptions(product);
+    const baseStorageOption = storageOptions[0];
+    const hasStoragePrices = storageOptions.length > 1;
+    const oldPriceHTML = baseStorageOption.oldPrice
+      ? `<span class="price-old">${formatCurrency(baseStorageOption.oldPrice)}</span>`
       : "";
+    const priceLabel = `${hasStoragePrices ? "Desde " : ""}${formatCurrency(baseStorageOption.price)}`;
 
     card.innerHTML = `
       <span class="product-tag-badge ${badgeClass}">${escapeHTML(product.badge || product.condition || "Disponible")}</span>
@@ -238,7 +242,7 @@ function renderProducts() {
         </button>
         <p class="product-condition">${condition === "nuevo" ? "Equipo nuevo de fábrica" : "Seminuevo Grado A+"}</p>
         <div class="product-price-row">
-          <span class="price-current">${formatCurrency(product.price)}</span>
+          <span class="price-current">${priceLabel}</span>
           ${oldPriceHTML}
         </div>
         <button type="button" class="btn btn-primary" data-add-product="${Number(product.id)}">Agregar al carrito</button>
@@ -267,7 +271,7 @@ function openProductModal(productId) {
 
   currentSelectedProduct = product;
   modalSelectedColor = product.variants?.colors?.[0]?.name || "Color estándar";
-  modalSelectedStorage = product.variants?.storage?.[0] || "Estándar";
+  modalSelectedStorage = getStorageOptions(product)[0].name;
 
   renderModalContent();
   productModal?.classList.add("active");
@@ -289,7 +293,8 @@ function renderModalContent() {
   const colors = product.variants?.colors?.length
     ? product.variants.colors
     : [{ name: "Color estándar", value: "#cccccc" }];
-  const storage = product.variants?.storage?.length ? product.variants.storage : ["Estándar"];
+  const storage = getStorageOptions(product);
+  const selectedStorageOption = getStorageOption(product, modalSelectedStorage);
 
   const colorsHTML = colors
     .map((color) => {
@@ -302,8 +307,12 @@ function renderModalContent() {
 
   const storageHTML = storage
     .map((item) => {
-      const active = item === modalSelectedStorage ? "active" : "";
-      return `<button type="button" class="variant-btn ${active}" data-storage="${escapeHTML(item)}">${escapeHTML(item)}</button>`;
+      const active = item.name === modalSelectedStorage ? "active" : "";
+      return `
+        <button type="button" class="variant-btn ${active}" data-storage="${escapeHTML(item.name)}">
+          ${escapeHTML(item.name)} <span>${formatCurrency(item.price)}</span>
+        </button>
+      `;
     })
     .join("");
 
@@ -311,10 +320,10 @@ function renderModalContent() {
     ? product.specs.map((spec) => `<li>${escapeHTML(spec)}</li>`).join("")
     : "";
 
-  const oldPriceHTML = product.oldPrice
-    ? `<span class="modal-price-old">${formatCurrency(product.oldPrice)}</span>`
+  const oldPriceHTML = selectedStorageOption.oldPrice
+    ? `<span class="modal-price-old">${formatCurrency(selectedStorageOption.oldPrice)}</span>`
     : "";
-  const monthlyPayment = formatCurrency(Math.round(Number(product.price || 0) / 6));
+  const monthlyPayment = formatCurrency(Math.round(selectedStorageOption.price / 6));
 
   productModalBody.innerHTML = `
     <div class="modal-grid">
@@ -325,7 +334,7 @@ function renderModalContent() {
         <span class="product-brand">${escapeHTML(product.brand || "")}</span>
         <h1 class="modal-title">${escapeHTML(product.title || "Producto")}</h1>
         <div class="modal-price-row">
-          <span class="modal-price">${formatCurrency(product.price)}</span>
+          <span class="modal-price">${formatCurrency(selectedStorageOption.price)}</span>
           ${oldPriceHTML}
         </div>
         <div class="option-group">
@@ -374,9 +383,8 @@ function renderModalContent() {
 
   productModalBody.querySelectorAll(".variant-btn").forEach((button) => {
     button.addEventListener("click", () => {
-      productModalBody.querySelectorAll(".variant-btn").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
       modalSelectedStorage = button.dataset.storage || "Estándar";
+      renderModalContent();
     });
   });
 
@@ -400,7 +408,7 @@ function quickAddToCart(productId) {
   if (!product) return;
 
   const color = product.variants?.colors?.[0]?.name || "Color estándar";
-  const storage = product.variants?.storage?.[0] || "Estándar";
+  const storage = getStorageOptions(product)[0].name;
   addToCart(product, color, storage);
 }
 
@@ -412,7 +420,8 @@ function addModalProductToCart() {
 }
 
 function addToCart(product, color, storage) {
-  const cartItemId = `${product.id}-${color}-${storage}`;
+  const selectedStorageOption = getStorageOption(product, storage);
+  const cartItemId = `${product.id}-${color}-${selectedStorageOption.name}`;
   const existingItem = cart.find((item) => item.cartItemId === cartItemId);
 
   if (existingItem) {
@@ -423,10 +432,11 @@ function addToCart(product, color, storage) {
       id: Number(product.id),
       title: product.title,
       brand: product.brand,
-      price: Number(product.price) || 0,
+      price: selectedStorageOption.price,
+      oldPrice: selectedStorageOption.oldPrice,
       image: product.image || FALLBACK_IMAGE,
       color,
-      storage,
+      storage: selectedStorageOption.name,
       quantity: 1
     });
   }
@@ -616,6 +626,45 @@ function toggleTheme() {
 /* ========================================================================== 
    UTILIDADES
    ========================================================================== */
+
+/*
+  Cada opción de almacenamiento puede definir su propio precio:
+  { name: "256GB", price: 29500, oldPrice: 32000 }
+  También se aceptan strings para mantener compatibilidad con catálogos anteriores.
+*/
+function getStorageOptions(product) {
+  const defaultOption = {
+    name: "Estándar",
+    price: Number(product?.price) || 0,
+    oldPrice: Number(product?.oldPrice) || 0
+  };
+  const storage = product?.variants?.storage;
+
+  if (!Array.isArray(storage) || storage.length === 0) {
+    return [defaultOption];
+  }
+
+  return storage.map((item, index) => {
+    if (typeof item === "string") {
+      return {
+        name: item,
+        price: defaultOption.price,
+        oldPrice: defaultOption.oldPrice
+      };
+    }
+
+    return {
+      name: String(item.name || `Opción ${index + 1}`),
+      price: Number(item.price) || defaultOption.price,
+      oldPrice: Number(item.oldPrice) || 0
+    };
+  });
+}
+
+function getStorageOption(product, storageName) {
+  const options = getStorageOptions(product);
+  return options.find((option) => option.name === storageName) || options[0];
+}
 
 function getStoredCart() {
   try {
