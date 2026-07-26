@@ -19,11 +19,36 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Titanio Natural", "value": "#bebeb6" },
-        { "name": "Titanio Azul", "value": "#2f4452" },
-        { "name": "Titanio Negro", "value": "#3b3c3e" }
+        {
+          "name": "Titanio Natural",
+          "value": "#bebeb6"
+        },
+        {
+          "name": "Titanio Azul",
+          "value": "#2f4452"
+        },
+        {
+          "name": "Titanio Negro",
+          "value": "#3b3c3e"
+        }
       ],
-      "storage": ["256GB", "512GB", "1TB"]
+      "storage": [
+        {
+          "name": "256GB",
+          "price": 29500,
+          "oldPrice": 32000
+        },
+        {
+          "name": "512GB",
+          "price": 32000,
+          "oldPrice": 34500
+        },
+        {
+          "name": "1TB",
+          "price": 36000,
+          "oldPrice": 38500
+        }
+      ]
     }
   },
   {
@@ -46,11 +71,31 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Sierra Blue", "value": "#a7c1d6" },
-        { "name": "Graphite", "value": "#4e4f50" },
-        { "name": "Gold", "value": "#fae0c5" }
+        {
+          "name": "Sierra Blue",
+          "value": "#a7c1d6"
+        },
+        {
+          "name": "Graphite",
+          "value": "#4e4f50"
+        },
+        {
+          "name": "Gold",
+          "value": "#fae0c5"
+        }
       ],
-      "storage": ["128GB", "256GB"]
+      "storage": [
+        {
+          "name": "128GB",
+          "price": 15900,
+          "oldPrice": 18500
+        },
+        {
+          "name": "256GB",
+          "price": 18000,
+          "oldPrice": 20600
+        }
+      ]
     }
   },
   {
@@ -73,11 +118,31 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Midnight", "value": "#1c1c1e" },
-        { "name": "Blue", "value": "#a7c7e7" },
-        { "name": "Purple", "value": "#d8bfd8" }
+        {
+          "name": "Midnight",
+          "value": "#1c1c1e"
+        },
+        {
+          "name": "Blue",
+          "value": "#a7c7e7"
+        },
+        {
+          "name": "Purple",
+          "value": "#d8bfd8"
+        }
       ],
-      "storage": ["128GB", "256GB"]
+      "storage": [
+        {
+          "name": "128GB",
+          "price": 18500,
+          "oldPrice": 20500
+        },
+        {
+          "name": "256GB",
+          "price": 20500,
+          "oldPrice": 22500
+        }
+      ]
     }
   },
   {
@@ -100,11 +165,31 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Negro", "value": "#111111" },
-        { "name": "Blanco", "value": "#f5f5f7" },
-        { "name": "Azul", "value": "#203a43" }
+        {
+          "name": "Negro",
+          "value": "#111111"
+        },
+        {
+          "name": "Blanco",
+          "value": "#f5f5f7"
+        },
+        {
+          "name": "Azul",
+          "value": "#203a43"
+        }
       ],
-      "storage": ["64GB", "128GB"]
+      "storage": [
+        {
+          "name": "64GB",
+          "price": 10500,
+          "oldPrice": 12500
+        },
+        {
+          "name": "128GB",
+          "price": 12000,
+          "oldPrice": 14000
+        }
+      ]
     }
   },
   {
@@ -127,11 +212,31 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Titanium Gray", "value": "#8e8e93" },
-        { "name": "Titanium Violet", "value": "#4b415a" },
-        { "name": "Titanium Black", "value": "#1c1c1e" }
+        {
+          "name": "Titanium Gray",
+          "value": "#8e8e93"
+        },
+        {
+          "name": "Titanium Violet",
+          "value": "#4b415a"
+        },
+        {
+          "name": "Titanium Black",
+          "value": "#1c1c1e"
+        }
       ],
-      "storage": ["256GB", "512GB"]
+      "storage": [
+        {
+          "name": "256GB",
+          "price": 27900,
+          "oldPrice": 31000
+        },
+        {
+          "name": "512GB",
+          "price": 30900,
+          "oldPrice": 34000
+        }
+      ]
     }
   },
   {
@@ -154,10 +259,27 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Phantom Black", "value": "#111111" },
-        { "name": "Green", "value": "#4b6043" }
+        {
+          "name": "Phantom Black",
+          "value": "#111111"
+        },
+        {
+          "name": "Green",
+          "value": "#4b6043"
+        }
       ],
-      "storage": ["256GB", "512GB"]
+      "storage": [
+        {
+          "name": "256GB",
+          "price": 22500,
+          "oldPrice": 25000
+        },
+        {
+          "name": "512GB",
+          "price": 25500,
+          "oldPrice": 28000
+        }
+      ]
     }
   },
   {
@@ -180,10 +302,27 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Awesome Navy", "value": "#1a237e" },
-        { "name": "Awesome Iceblue", "value": "#e3f2fd" }
+        {
+          "name": "Awesome Navy",
+          "value": "#1a237e"
+        },
+        {
+          "name": "Awesome Iceblue",
+          "value": "#e3f2fd"
+        }
       ],
-      "storage": ["128GB", "256GB"]
+      "storage": [
+        {
+          "name": "128GB",
+          "price": 9500,
+          "oldPrice": 11000
+        },
+        {
+          "name": "256GB",
+          "price": 11000,
+          "oldPrice": 12500
+        }
+      ]
     }
   },
   {
@@ -206,11 +345,31 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Gris Espacial", "value": "#4e4f50" },
-        { "name": "Azul", "value": "#a7c1d6" },
-        { "name": "Púrpura", "value": "#d7c3eb" }
+        {
+          "name": "Gris Espacial",
+          "value": "#4e4f50"
+        },
+        {
+          "name": "Azul",
+          "value": "#a7c1d6"
+        },
+        {
+          "name": "Púrpura",
+          "value": "#d7c3eb"
+        }
       ],
-      "storage": ["64GB", "256GB"]
+      "storage": [
+        {
+          "name": "64GB",
+          "price": 12900,
+          "oldPrice": 14500
+        },
+        {
+          "name": "256GB",
+          "price": 15500,
+          "oldPrice": 17100
+        }
+      ]
     }
   },
   {
@@ -233,9 +392,18 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Blanco", "value": "#ffffff" }
+        {
+          "name": "Blanco",
+          "value": "#ffffff"
+        }
       ],
-      "storage": ["Estándar"]
+      "storage": [
+        {
+          "name": "Estándar",
+          "price": 5900,
+          "oldPrice": 6800
+        }
+      ]
     }
   },
   {
@@ -258,9 +426,18 @@
     ],
     "variants": {
       "colors": [
-        { "name": "Blanco", "value": "#ffffff" }
+        {
+          "name": "Blanco",
+          "value": "#ffffff"
+        }
       ],
-      "storage": ["Estándar"]
+      "storage": [
+        {
+          "name": "Estándar",
+          "price": 750,
+          "oldPrice": 950
+        }
+      ]
     }
   }
 ]
