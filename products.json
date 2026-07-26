@@ -56,7 +56,6 @@
   {
     "id": 3,
     "title": "iPhone 14",
-    "name": "iPhone 13 Pro Max",
     "brand": "Apple",
     "price": 18500,
     "oldPrice": 20500,
@@ -134,9 +133,6 @@
       ],
       "storage": ["256GB", "512GB"]
     }
-    "condition": "Seminuevo",
-    "storage": "256GB",
-    "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pro-max-blue-select"
   },
   {
     "id": 6,
@@ -167,8 +163,6 @@
   {
     "id": 7,
     "title": "Samsung Galaxy A55 5G",
-    "id": 2,
-    "name": "Samsung Galaxy S23 Ultra",
     "brand": "Samsung",
     "price": 9500,
     "oldPrice": 11000,
@@ -268,9 +262,5 @@
       ],
       "storage": ["Estándar"]
     }
-    "price": 22000,
-    "condition": "Nuevo",
-    "storage": "512GB",
-    "image": "https://images.samsung.com/is/image/samsung/p6pim/latin/galaxy-s23/gallery/latin-galaxy-s23-s918-sm-s918bzgqgtp-534886905"
   }
 ]
