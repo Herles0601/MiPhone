@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel Admin | Mi Phone HN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <!-- Pantalla de acceso -->
+  <section id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-brand">
+        <span class="login-logo">Mi Phone <span>HN</span></span>
+        <p class="login-subtitle">Panel de administración del catálogo</p>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="admin-password">Contraseña de admin</label>
+          <input type="password" id="admin-password" autocomplete="current-password" required placeholder="Ingresa tu contraseña">
+        </div>
+        <div class="form-group">
+          <label for="github-token">
+            Token de GitHub
+            <span class="label-hint">(para publicar cambios en el sitio)</span>
+          </label>
+          <input type="password" id="github-token" autocomplete="off" placeholder="ghp_... o github_pat_...">
+          <p class="field-help">
+            Crea un token en GitHub con permiso <strong>Contents: Read and write</strong> del repo MiPhone.
+            <a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer">Crear token</a>
+          </p>
+        </div>
+        <p id="login-error" class="form-error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Entrar al panel</button>
+      </form>
+
+      <a href="index.html" class="back-link">← Volver a la tienda</a>
+    </div>
+  </section>
+
+  <!-- Panel principal -->
+  <div id="admin-app" class="admin-app" hidden>
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <div class="admin-header-brand">
+          <span class="admin-logo">Mi Phone <span>Admin</span></span>
+          <span class="admin-badge">Catálogo</span>
+        </div>
+        <div class="admin-header-actions">
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Ver tienda</a>
+          <button type="button" id="logout-btn" class="btn btn-ghost">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-container">
+        <!-- Alertas -->
+        <div id="admin-alert" class="admin-alert" role="alert" hidden></div>
+
+        <!-- Resumen -->
+        <section class="stats-row" aria-label="Resumen del catálogo">
+          <article class="stat-card">
+            <span class="stat-value" id="stat-total">0</span>
+            <span class="stat-label">Productos</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value" id="stat-iphones">0</span>
+            <span class="stat-label">iPhones</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value" id="stat-samsung">0</span>
+            <span class="stat-label">Samsung</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value" id="stat-other">0</span>
+            <span class="stat-label">iPads + Accesorios</span>
+          </article>
+        </section>
+
+        <!-- Barra de herramientas -->
+        <section class="toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                <path stroke-linecap="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
+              </svg>
+              <label class="sr-only" for="admin-search">Buscar productos</label>
+              <input type="search" id="admin-search" placeholder="Buscar por nombre o marca...">
+            </div>
+            <select id="admin-category-filter" aria-label="Filtrar por categoría">
+              <option value="all">Todas las categorías</option>
+              <option value="iphones">iPhones</option>
+              <option value="samsung">Samsung</option>
+              <option value="ipads">iPads</option>
+              <option value="accessories">Accesorios</option>
+            </select>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" id="reload-btn" class="btn btn-secondary">Recargar</button>
+            <button type="button" id="download-json-btn" class="btn btn-secondary">Descargar JSON</button>
+            <button type="button" id="add-product-btn" class="btn btn-primary">+ Nuevo producto</button>
+            <button type="button" id="publish-btn" class="btn btn-accent">Publicar cambios</button>
+          </div>
+        </section>
+
+        <!-- Tabla de productos -->
+        <section class="products-table-section">
+          <div class="table-wrapper">
+            <table class="products-table" aria-label="Lista de productos">
+              <thead>
+                <tr>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Condición</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="products-table-body"></tbody>
+            </table>
+          </div>
+          <p id="empty-table-msg" class="empty-table-msg" hidden>No hay productos que coincidan con la búsqueda.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal de producto -->
+  <div id="product-modal" class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="admin-modal-overlay" id="modal-overlay"></div>
+    <div class="admin-modal-content">
+      <header class="admin-modal-header">
+        <h2 id="modal-title">Editar producto</h2>
+        <button type="button" id="modal-close-btn" class="icon-btn" aria-label="Cerrar">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </header>
+
+      <form id="product-form" class="product-form">
+        <input type="hidden" id="product-id">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="product-title">Nombre del producto *</label>
+            <input type="text" id="product-title" required placeholder="Ej. iPhone 15 Pro Max">
+          </div>
+          <div class="form-group">
+            <label for="product-brand">Marca *</label>
+            <input type="text" id="product-brand" required placeholder="Ej. Apple">
+          </div>
+          <div class="form-group">
+            <label for="product-category">Categoría *</label>
+            <select id="product-category" required>
+              <option value="iphones">iPhones</option>
+              <option value="samsung">Samsung</option>
+              <option value="ipads">iPads</option>
+              <option value="accessories">Accesorios</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="product-condition">Condición *</label>
+            <select id="product-condition" required>
+              <option value="nuevo">Nuevo</option>
+              <option value="seminuevo">Seminuevo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="product-badge">Etiqueta (badge)</label>
+            <input type="text" id="product-badge" placeholder="Ej. Nuevo, Seminuevo">
+          </div>
+          <div class="form-group">
+            <label for="product-image">URL de imagen *</label>
+            <input type="url" id="product-image" required placeholder="https://...">
+          </div>
+          <div class="form-group form-group-full">
+            <label for="product-description">Descripción</label>
+            <textarea id="product-description" rows="3" placeholder="Descripción breve del producto"></textarea>
+          </div>
+        </div>
+
+        <!-- Especificaciones -->
+        <fieldset class="form-fieldset">
+          <legend>Especificaciones técnicas</legend>
+          <div id="specs-list" class="dynamic-list"></div>
+          <button type="button" id="add-spec-btn" class="btn btn-ghost btn-sm">+ Agregar especificación</button>
+        </fieldset>
+
+        <!-- Colores -->
+        <fieldset class="form-fieldset">
+          <legend>Colores disponibles</legend>
+          <div id="colors-list" class="dynamic-list"></div>
+          <button type="button" id="add-color-btn" class="btn btn-ghost btn-sm">+ Agregar color</button>
+        </fieldset>
+
+        <!-- Almacenamiento / variantes -->
+        <fieldset class="form-fieldset">
+          <legend>Capacidades y precios</legend>
+          <div id="storage-list" class="dynamic-list"></div>
+          <button type="button" id="add-storage-btn" class="btn btn-ghost btn-sm">+ Agregar capacidad</button>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+
+        <footer class="admin-modal-footer">
+          <button type="button" id="delete-product-btn" class="btn btn-danger" hidden>Eliminar producto</button>
+          <div class="modal-footer-actions">
+            <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar producto</button>
+          </div>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirmación -->
+  <div id="confirm-dialog" class="admin-modal confirm-dialog" role="alertdialog" aria-labelledby="confirm-title" hidden>
+    <div class="admin-modal-overlay" id="confirm-overlay"></div>
+    <div class="confirm-content">
+      <h3 id="confirm-title">¿Confirmar acción?</h3>
+      <p id="confirm-message"></p>
+      <div class="confirm-actions">
+        <button type="button" id="confirm-cancel-btn" class="btn btn-secondary">Cancelar</button>
+        <button type="button" id="confirm-ok-btn" class="btn btn-danger">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
