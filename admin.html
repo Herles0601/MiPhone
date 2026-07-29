@@ -3,236 +3,370 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Panel Admin | Mi Phone HN</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
-  <script src="admin.js" defer></script>
+  <title>MI PHONE HN — Panel Admin SaaS</title>
+  <style>
+    /* ==========================================================================
+       VARIABLES - PALETA VANGUARDISTA (60% Blanco, 30% Azul Oscuro, 10% Rojo)
+       ========================================================================== */
+    :root {
+      --color-60: #FFFFFF;       /* Blanco predominante */
+      --color-30: #0B1B3D;       /* Azul oscuro corporativo */
+      --color-10: #E63946;       /* Rojo de acento/llamada a la acción */
+      --bg-light: #F8F9FA;       /* Blanco roto para fondos secundarios */
+      --text-dark: #1A1A1A;
+      --text-muted: #666666;
+      --border-color: #E0E0E0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+    
+    body { background-color: var(--color-60); color: var(--text-dark); }
+
+    /* Utilidades de Botones */
+    .btn { padding: 10px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+    .btn-primary { background-color: var(--color-10); color: var(--color-60); }
+    .btn-primary:hover { background-color: #c92a37; }
+    .btn-secondary { background-color: var(--color-30); color: var(--color-60); }
+    .btn-secondary:hover { background-color: #071228; }
+    .btn-danger { background-color: var(--color-10); color: var(--color-60); }
+    .btn-sm { padding: 6px 12px; font-size: 0.85rem; }
+
+    /* ==========================================================================
+       PANTALLA DE LOGIN
+       ========================================================================== */
+    #login-screen { display: flex; height: 100vh; justify-content: center; align-items: center; background-color: var(--bg-light); }
+    .login-card { background: var(--color-60); padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(11, 27, 61, 0.1); width: 100%; max-width: 400px; border-top: 5px solid var(--color-10); }
+    .login-card h2 { color: var(--color-30); margin-bottom: 20px; text-align: center; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; color: var(--color-30); font-weight: 600; font-size: 0.9rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; outline: none; }
+    .form-group input:focus { border-color: var(--color-30); }
+    #login-error { color: var(--color-10); margin-top: 10px; font-size: 0.9rem; text-align: center; }
+
+    /* ==========================================================================
+       PANEL DE ADMINISTRACIÓN (LAYOUT)
+       ========================================================================== */
+    #admin-app { display: flex; min-height: 100vh; }
+    
+    /* Sidebar */
+    .sidebar { width: 260px; background-color: var(--color-30); color: var(--color-60); display: flex; flex-direction: column; padding: 20px; }
+    .sidebar h2 { color: var(--color-60); margin-bottom: 30px; border-left: 4px solid var(--color-10); padding-left: 10px; }
+    .sidebar-section { margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px; }
+    .sidebar-section h3 { font-size: 0.9rem; margin-bottom: 10px; color: var(--color-10); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Ocultar elementos en móvil */
+    @media (max-width: 768px) {
+      .sidebar { width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+      #directorio-tecnicos, #proximos-mantenimientos { display: none !important; }
+      #admin-app { flex-direction: column; }
+    }
+
+    /* Main Content */
+    .main-content { flex: 1; padding: 30px; background-color: var(--color-60); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
+    
+    /* Métricas */
+    .dashboard-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .metric-card { background: var(--bg-light); padding: 20px; border-radius: 6px; border-left: 4px solid var(--color-30); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .metric-card h4 { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 10px; }
+    .metric-card span { font-size: 2rem; font-weight: bold; color: var(--color-30); }
+
+    /* Toolbar y Tabla */
+    .toolbar { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+    .toolbar input, .toolbar select { padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; flex: 1; min-width: 200px; }
+    .table-container { overflow-x: auto; background: var(--color-60); border: 1px solid var(--border-color); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background-color: var(--color-30); color: var(--color-60); padding: 15px; text-align: left; }
+    td { padding: 15px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+    .product-cell { display: flex; align-items: center; gap: 15px; }
+    .product-thumb { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color); }
+    .product-cell-info strong { display: block; color: var(--color-30); }
+    .product-cell-info span { font-size: 0.85rem; color: var(--text-muted); }
+    .category-pill, .condition-pill { display: inline-block; padding: 4px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+    .category-pill { background-color: rgba(11, 27, 61, 0.1); color: var(--color-30); }
+    .condition-pill.nuevo { background-color: rgba(230, 57, 70, 0.1); color: var(--color-10); }
+    .condition-pill.seminuevo { background-color: var(--bg-light); color: var(--text-muted); }
+
+    /* ==========================================================================
+       MODALES & OVERLAYS
+       ========================================================================== */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 27, 61, 0.6); z-index: 1000; display: flex; justify-content: center; align-items: center; }
+    .modal { background: var(--color-60); width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 8px; padding: 30px; position: relative; border-top: 5px solid var(--color-30); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .modal-header h2 { color: var(--color-30); }
+    .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-10); }
+    
+    .dynamic-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .dynamic-row input { flex: 1; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; }
+    .remove-row-btn { background: var(--bg-light); color: var(--color-10); border: 1px solid var(--color-10); padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+    
+    #file-dropzone { border: 2px dashed var(--color-30); padding: 30px; text-align: center; border-radius: 6px; cursor: pointer; background: var(--bg-light); margin-bottom: 15px; }
+    #file-dropzone.dragover { background: rgba(11, 27, 61, 0.05); border-color: var(--color-10); }
+    .dropzone-text { color: var(--color-30); font-weight: 600; }
+
+    #admin-alert { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 4px; color: var(--color-60); z-index: 9999; }
+    .alert-success { background-color: var(--color-30); border-left: 4px solid var(--color-10); }
+    .alert-error { background-color: var(--color-10); }
+
+    [hidden] { display: none !important; }
+  </style>
 </head>
 <body>
-  <!-- Pantalla de acceso -->
-  <section id="login-screen" class="login-screen">
+
+  <!-- Alertas globales -->
+  <div id="admin-alert" hidden></div>
+
+  <!-- PANTALLA DE LOGIN -->
+  <div id="login-screen">
     <div class="login-card">
-      <div class="login-brand">
-        <span class="login-logo">Mi Phone <span>HN</span></span>
-        <p class="login-subtitle">Panel de administración del catálogo</p>
-      </div>
-
-      <form id="login-form" class="login-form">
+      <h2>MI PHONE HN</h2>
+      <form id="login-form">
         <div class="form-group">
-          <label for="admin-password">Contraseña de admin</label>
-          <input type="password" id="admin-password" autocomplete="current-password" required placeholder="Ingresa tu contraseña">
+          <label for="admin-email">Correo Electrónico</label>
+          <input id="admin-email" type="email" placeholder="admin@miphone.hn" required>
         </div>
         <div class="form-group">
-          <label for="github-token">
-            Token de GitHub
-            <span class="label-hint">(para publicar cambios en el sitio)</span>
-          </label>
-          <input type="password" id="github-token" autocomplete="off" placeholder="ghp_... o github_pat_...">
-          <p class="field-help">
-            Crea un token en GitHub con permiso <strong>Contents: Read and write</strong> del repo MiPhone.
-            <a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer">Crear token</a>
-          </p>
+          <label for="admin-password">Contraseña</label>
+          <input id="admin-password" type="password" placeholder="••••••••" required>
         </div>
-        <p id="login-error" class="form-error" role="alert" hidden></p>
-        <button type="submit" class="btn btn-primary btn-block">Entrar al panel</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar Sesión</button>
+        <div id="login-error" hidden></div>
       </form>
-
-      <a href="index.html" class="back-link">← Volver a la tienda</a>
     </div>
-  </section>
+  </div>
 
-  <!-- Panel principal -->
-  <div id="admin-app" class="admin-app" hidden>
-    <header class="admin-header">
-      <div class="admin-header-inner">
-        <div class="admin-header-brand">
-          <span class="admin-logo">Mi Phone <span>Admin</span></span>
-          <span class="admin-badge">Catálogo</span>
-        </div>
-        <div class="admin-header-actions">
-          <a href="index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Ver tienda</a>
-          <button type="button" id="logout-btn" class="btn btn-ghost">Cerrar sesión</button>
+  <!-- PANEL DE ADMINISTRACIÓN -->
+  <div id="admin-app" hidden>
+    
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div>
+        <h2>ADMIN PANEL</h2>
+        <div class="sidebar-section">
+          <h3>Gestión</h3>
+          <button id="manage-categories-btn" class="btn btn-primary btn-sm" style="width:100%;">Categorías</button>
         </div>
       </div>
-    </header>
+      
+      <!-- Secciones Operativas -->
+      <div id="directorio-tecnicos" class="sidebar-section">
+        <h3>Directorio de Técnicos</h3>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.7);">Gestión de personal en campo.</p>
+      </div>
+      <div id="proximos-mantenimientos" class="sidebar-section">
+        <h3>Próximos Mantenimientos</h3>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.7);">Registro de servicios agendados.</p>
+      </div>
+    </nav>
 
-    <main class="admin-main">
-      <div class="admin-container">
-        <!-- Alertas -->
-        <div id="admin-alert" class="admin-alert" role="alert" hidden></div>
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <a id="view-store-link" href="#" class="btn btn-secondary btn-sm" target="_blank">Ver Tienda</a>
+        </div>
+        <button id="logout-btn" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+      </div>
 
-        <!-- Resumen -->
-        <section class="stats-row" aria-label="Resumen del catálogo">
-          <article class="stat-card">
-            <span class="stat-value" id="stat-total">0</span>
-            <span class="stat-label">Productos</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-value" id="stat-iphones">0</span>
-            <span class="stat-label">iPhones</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-value" id="stat-samsung">0</span>
-            <span class="stat-label">Samsung</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-value" id="stat-other">0</span>
-            <span class="stat-label">iPads + Accesorios</span>
-          </article>
-        </section>
+      <!-- Métricas -->
+      <div class="dashboard-metrics">
+        <div class="metric-card">
+          <h4>Total Productos</h4>
+          <span id="metric-total-products">0</span>
+        </div>
+        <div class="metric-card">
+          <h4>iPhones</h4>
+          <span id="metric-iphones-count">0</span>
+        </div>
+        <div class="metric-card">
+          <h4>Samsung</h4>
+          <span id="metric-samsung-count">0</span>
+        </div>
+        <div class="metric-card">
+          <h4>Otros</h4>
+          <span id="metric-others-count">0</span>
+        </div>
+      </div>
 
-        <!-- Barra de herramientas -->
-        <section class="toolbar">
-          <div class="toolbar-left">
-            <div class="search-box">
-              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <circle cx="11" cy="11" r="8" stroke-width="2"/>
-                <path stroke-linecap="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
-              </svg>
-              <label class="sr-only" for="admin-search">Buscar productos</label>
-              <input type="search" id="admin-search" placeholder="Buscar por nombre o marca...">
-            </div>
-            <select id="admin-category-filter" aria-label="Filtrar por categoría">
-              <option value="all">Todas las categorías</option>
-              <option value="iphones">iPhones</option>
-              <option value="samsung">Samsung</option>
-              <option value="ipads">iPads</option>
-              <option value="accessories">Accesorios</option>
-            </select>
-          </div>
-          <div class="toolbar-right">
-            <button type="button" id="reload-btn" class="btn btn-secondary">Recargar</button>
-            <button type="button" id="download-json-btn" class="btn btn-secondary">Descargar JSON</button>
-            <button type="button" id="add-product-btn" class="btn btn-primary">+ Nuevo producto</button>
-            <button type="button" id="publish-btn" class="btn btn-accent">Publicar cambios</button>
-          </div>
-        </section>
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <input id="admin-search" type="text" placeholder="Buscar por título o marca...">
+        <select id="admin-category-filter">
+          <option value="all">📁 Todas las Categorías</option>
+        </select>
+        <button id="add-product-btn" class="btn btn-primary">Nuevo Producto</button>
+        <button id="reload-btn" class="btn btn-secondary">Actualizar</button>
+      </div>
 
-        <!-- Tabla de productos -->
-        <section class="products-table-section">
-          <div class="table-wrapper">
-            <table class="products-table" aria-label="Lista de productos">
-              <thead>
-                <tr>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Categoría</th>
-                  <th scope="col">Condición</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="products-table-body"></tbody>
-            </table>
-          </div>
-          <p id="empty-table-msg" class="empty-table-msg" hidden>No hay productos que coincidan con la búsqueda.</p>
-        </section>
+      <!-- Tabla de Productos -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Condición</th>
+              <th>Precio Base</th>
+              <th style="text-align: right;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body">
+            <!-- Renderizado dinámico -->
+          </tbody>
+        </table>
+        <div id="empty-table-msg" style="padding: 30px; text-align: center; color: var(--text-muted);" hidden>
+          No se encontraron productos.
+        </div>
       </div>
     </main>
   </div>
 
-  <!-- Modal de producto -->
-  <div id="product-modal" class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-    <div class="admin-modal-overlay" id="modal-overlay"></div>
-    <div class="admin-modal-content">
-      <header class="admin-modal-header">
-        <h2 id="modal-title">Editar producto</h2>
-        <button type="button" id="modal-close-btn" class="icon-btn" aria-label="Cerrar">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </header>
-
-      <form id="product-form" class="product-form">
+  <!-- MODAL: PRODUCTO -->
+  <div id="product-modal" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Nuevo Producto</h2>
+        <button id="modal-close-btn" class="close-btn">&times;</button>
+      </div>
+      <form id="product-form">
         <input type="hidden" id="product-id">
-
-        <div class="form-grid">
+        <div id="form-error" hidden style="color: var(--color-10); margin-bottom: 15px;"></div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
           <div class="form-group">
-            <label for="product-title">Nombre del producto *</label>
-            <input type="text" id="product-title" required placeholder="Ej. iPhone 15 Pro Max">
+            <label>Título</label>
+            <input type="text" id="product-title" required>
           </div>
           <div class="form-group">
-            <label for="product-brand">Marca *</label>
-            <input type="text" id="product-brand" required placeholder="Ej. Apple">
+            <label>Marca</label>
+            <input type="text" id="product-brand" required>
           </div>
           <div class="form-group">
-            <label for="product-category">Categoría *</label>
-            <select id="product-category" required>
-              <option value="iphones">iPhones</option>
-              <option value="samsung">Samsung</option>
-              <option value="ipads">iPads</option>
-              <option value="accessories">Accesorios</option>
-            </select>
+            <label>Categoría</label>
+            <select id="product-category" required></select>
           </div>
           <div class="form-group">
-            <label for="product-condition">Condición *</label>
-            <select id="product-condition" required>
+            <label>Condición</label>
+            <select id="product-condition">
               <option value="nuevo">Nuevo</option>
               <option value="seminuevo">Seminuevo</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="product-badge">Etiqueta (badge)</label>
-            <input type="text" id="product-badge" placeholder="Ej. Nuevo, Seminuevo">
+            <label>Badge (Etiqueta)</label>
+            <input type="text" id="product-badge">
           </div>
           <div class="form-group">
-            <label for="product-image">URL de imagen *</label>
-            <input type="url" id="product-image" required placeholder="https://...">
-          </div>
-          <div class="form-group form-group-full">
-            <label for="product-description">Descripción</label>
-            <textarea id="product-description" rows="3" placeholder="Descripción breve del producto"></textarea>
+            <label>URL Imagen (Opcional)</label>
+            <input type="text" id="product-image">
           </div>
         </div>
 
-        <!-- Especificaciones -->
-        <fieldset class="form-fieldset">
-          <legend>Especificaciones técnicas</legend>
-          <div id="specs-list" class="dynamic-list"></div>
-          <button type="button" id="add-spec-btn" class="btn btn-ghost btn-sm">+ Agregar especificación</button>
-        </fieldset>
-
-        <!-- Colores -->
-        <fieldset class="form-fieldset">
-          <legend>Colores disponibles</legend>
-          <div id="colors-list" class="dynamic-list"></div>
-          <button type="button" id="add-color-btn" class="btn btn-ghost btn-sm">+ Agregar color</button>
-        </fieldset>
-
-        <!-- Almacenamiento / variantes -->
-        <fieldset class="form-fieldset">
-          <legend>Capacidades y precios</legend>
-          <div id="storage-list" class="dynamic-list"></div>
-          <button type="button" id="add-storage-btn" class="btn btn-ghost btn-sm">+ Agregar capacidad</button>
-        </fieldset>
-
-        <p id="form-error" class="form-error" role="alert" hidden></p>
-
-        <footer class="admin-modal-footer">
-          <button type="button" id="delete-product-btn" class="btn btn-danger" hidden>Eliminar producto</button>
-          <div class="modal-footer-actions">
-            <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Guardar producto</button>
+        <div class="form-group">
+          <label>Subir Imagen</label>
+          <div id="file-dropzone">
+            <span class="dropzone-text">Arrastra una imagen aquí o haz clic para explorar</span>
+            <input type="file" id="product-image-file" style="display: none;" accept="image/*">
           </div>
-        </footer>
+        </div>
+
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea id="product-description" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Especificaciones</label>
+          <div id="specs-list"></div>
+          <button type="button" id="add-spec-btn" class="btn btn-secondary btn-sm">+ Agregar Spec</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+          <div class="form-group">
+            <label>Colores</label>
+            <div id="colors-list"></div>
+            <button type="button" id="add-color-btn" class="btn btn-secondary btn-sm">+ Agregar Color</button>
+          </div>
+          <div class="form-group">
+            <label>Almacenamiento / Precios</label>
+            <div id="storage-list"></div>
+            <button type="button" id="add-storage-btn" class="btn btn-secondary btn-sm">+ Agregar Variante</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <button type="button" id="delete-product-btn" class="btn btn-danger" hidden>Eliminar Producto</button>
+          <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Producto</button>
+        </div>
       </form>
     </div>
   </div>
 
-  <!-- Confirmación -->
-  <div id="confirm-dialog" class="admin-modal confirm-dialog" role="alertdialog" aria-labelledby="confirm-title" hidden>
-    <div class="admin-modal-overlay" id="confirm-overlay"></div>
-    <div class="confirm-content">
-      <h3 id="confirm-title">¿Confirmar acción?</h3>
-      <p id="confirm-message"></p>
-      <div class="confirm-actions">
-        <button type="button" id="confirm-cancel-btn" class="btn btn-secondary">Cancelar</button>
-        <button type="button" id="confirm-ok-btn" class="btn btn-danger">Confirmar</button>
+  <!-- MODAL: CATEGORÍAS -->
+  <div id="category-modal" class="modal-overlay" hidden>
+    <div class="modal" style="max-width: 500px;">
+      <div class="modal-header">
+        <h2>Gestionar Categorías</h2>
+        <button id="close-category-modal-btn" class="close-btn">&times;</button>
+      </div>
+      <div class="form-group" style="display: flex; gap: 10px;">
+        <input type="text" id="new-category-name" placeholder="Nueva categoría...">
+        <button id="add-category-btn-modal" class="btn btn-primary">Añadir</button>
+      </div>
+      <div id="category-list" style="margin-top: 20px;"></div>
+    </div>
+  </div>
+
+  <!-- DIÁLOGO DE CONFIRMACIÓN -->
+  <div id="confirm-dialog" class="modal-overlay" hidden style="z-index: 2000;">
+    <div class="modal" style="max-width: 400px; text-align: center;">
+      <h2 id="confirm-title" style="color: var(--color-30); margin-bottom: 15px;"></h2>
+      <p id="confirm-message" style="margin-bottom: 25px; color: var(--text-muted);"></p>
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <button id="confirm-cancel-btn" class="btn btn-secondary">Cancelar</button>
+        <button id="confirm-ok-btn" class="btn btn-primary">Confirmar</button>
       </div>
     </div>
   </div>
+
+  <script>
+    /* ==========================================================================
+       LÓGICA ADICIONAL / HELPERS ESPERADOS POR TU SCRIPT
+       Pega aquí el código JS que proporcionaste para completarlo.
+       ========================================================================== */
+
+    // Helpers requeridos en tu código:
+    function escapeHTML(str) {
+      if (typeof str !== 'string') return '';
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    function formatCurrency(amount) {
+      // Estrictamente sin considerar decimales (Math.trunc)
+      return "L " + Math.trunc(amount).toLocaleString('es-HN');
+    }
+
+    function showAlert(message, type = "success") {
+      const alertBox = document.getElementById("admin-alert");
+      alertBox.textContent = message;
+      alertBox.className = type === "error" ? "alert-error" : "alert-success";
+      alertBox.hidden = false;
+      setTimeout(() => alertBox.hidden = true, 4000);
+    }
+
+    function closeConfirm() {
+      document.getElementById("confirm-dialog").hidden = true;
+      confirmCallback = null;
+    }
+
+    /* Aquí puedes pegar el resto de tu archivo JS incluyendo importaciones de Firebase, 
+       eventListeners y funciones de DB desde:
+       import { db, storage... } from './firebase-config.js';
+       ...
+       hasta completar addColorRow y handleProductSubmit. */
+  </script>
 </body>
 </html>
